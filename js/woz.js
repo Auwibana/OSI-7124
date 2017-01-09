@@ -111,5 +111,6 @@ function auswahl(response) {
 function option(response) {
 		var persons = document.getElementById("persons").value
 		var passenger = document.getElementById("passenger").checked
-		put(response, {"persons" : persons, "passenger": passenger});
+		var zwischenstops = document.getElementById("zwischenstops").value
+		put(response, {"persons" : persons, "passenger": passenger, "zwischenstops":zwischenstops});
 }

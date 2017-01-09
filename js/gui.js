@@ -78,4 +78,8 @@ function auswahlGet(response) {
 function optionGet(response) {
 	document.getElementById('preis_p').innerHTML = 20+response.persons*5 +"€"
 	document.getElementById('preis').innerHTML = 20+response.persons*5 +"€"
+	if(response.zwischenstops != ""){
+		document.getElementById('zwischenList').innerHTML = "<li>"+response.zwischenstops+"</li>"
+	}
+	document.getElementById("wartezeit").innerHTML = "Wartezeit: " + Math.floor(Math.random()*5) +":" +Math.floor(Math.random()*60)
 }
