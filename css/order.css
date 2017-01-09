@@ -3,6 +3,7 @@
     flex-direction: row;
 	justify-content: space-around;
     color: red;
+	background-color: lightblue;
 }
 
 .orderframe {
@@ -13,6 +14,14 @@
     height: 100%;
 	background-color: powderblue;
 }
+
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	padding: 8px 8px;
+}
+
+
 
 button {
 	background-color: #4CAF50; /* Green */
@@ -26,7 +35,38 @@ button {
 	border-radius: 10px;
 }
 
-#weiter {
-	position: absolute;
-    float: right;
+.auswahl .input {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.start {
+	display: flex;
+	align-items: center;
+	align-self: center;
+}
+
+.ziel {
+	display: flex;
+	align-items: center;
+	align-self: center;
+}
+
+.zeit {
+	display: flex;
+	align-items: center;
+	align-self: center;
+}
+
+.icon_button {
+	height: auto;
+	width: 20px;
+	padding: 1px 3px;
+}
+
+.map_pin {
+	height: auto;
+	width: 15px;
+	padding: 3px 3px;
 }
