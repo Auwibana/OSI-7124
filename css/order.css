@@ -2,6 +2,10 @@ header {
     background-color: grey;
 }
 
+body {
+    background-color: lightgrey;
+}
+
 .progressframe{
     display: flex;
     flex-direction: row;
@@ -20,7 +24,7 @@ header {
 	left: 25%;
     width: 50%;
     height: 100%;
-	background-color: powderblue;
+	background-color: white;
 }
 
 .buttons {
