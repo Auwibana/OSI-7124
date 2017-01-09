@@ -85,6 +85,13 @@ function prufen_weiter() {
 	document.getElementById("p_prufen").style.color = "white";
 }
 
+function bestatigen_zuruck() {
+	document.getElementById("bestatigen").style.display = "none";
+	document.getElementById("prufen").style.display = "inherit";
+	document.getElementById("p_bestatigen").style.color = "white";
+	document.getElementById("p_prufen").style.color = "red";
+}
+
 function bestatigen_weiter() {
 	document.getElementById("last").style.display = "inherit";
 	document.getElementById("bestatigen").style.display = "none";
