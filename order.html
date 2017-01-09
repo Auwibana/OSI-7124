@@ -8,10 +8,14 @@
     </head>
     <body>
         <header>
-            <h1 id="logo">OSI-7124</h1>
-            <a href="#"><span>Anmelden</span></a>
-            <a href="#"><span>Registrieren</span></a>
-        </header>
+			<div class="header">
+        	    <h1 id="logo">OSI-7124</h1>
+				<div class="regist_anmeld">
+        		    <a href="#"><span id="anmelden">Anmelden</span></a>
+            		<a href="#"><span id="register">Registrieren</span></a>
+				</div>
+			</div>
+		</header>
         <div class="orderframe">
             <div class="progressframe">
                 <p id="p_auswahl" onclick="auswahl_pressed()">Auswahl</p>
@@ -84,13 +88,19 @@
                 <div class="prufen" id="prufen">
                     <div class="input">
                         <div class="auswahl_p">
-                            <div class="standort_p">
-                                <p>Standort: </p>
-                                <p id="standort_p"></p>
-                            </div>
+							<div class="preis_standort">
+	                            <div class="standort_p">
+	                                <p>Standort: </p>
+	                                <p id="standort_p">Test</p>
+	                            </div>
+								<div class="preis_p">
+		                            <p>Preis:</p>
+		                            <p id="preis_p<">5.6€</p>
+		                        </div>
+							</div>
                             <div class="ziel_p">
                                 <p>Ziel: </p>
-                                <p id="ziel_p"></p>
+                                <p id="ziel_p">Test</p>
                             </div>
                             <div class="zwischenstops_p">
                                 <p>Zwischenstops:</p>
@@ -98,10 +108,6 @@
                                     <li>Test</li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="preis_p">
-                            <p>Preis:</p>
-                            <p id="preis"></p>
                         </div>
                         <div class="zwischenstops_p">
 
