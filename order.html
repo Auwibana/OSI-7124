@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/order.css">
         <script src="js/order.js"></script>
+        <script src="js/woz.js"></script>
+        <script src="js/gui.js"></script>
         <title>Order</title>
     </head>
     <body>
@@ -41,21 +43,21 @@
 	                    <div class="zeit">
                             <span class="headlines">Zeit</span>
 	                        <img src="img/calendar.png" alt="calendar" id="calendar" class="icon_button">
-                            <input type="date" name="" value="">
+                            <input type="date" name="" id="date" value="">
                             <img src="img/clock.png" alt="clock" class="icon_button">
-                            <input type="time" name="" value="">
+                            <input type="time" name="" id="time" value="">
 	                    </div>
 					</div>
 	                <div class="buttons">
 	                    <a href="index.html"><button type="button" id="zuruck" name="zuruck" class="zuruck">Zurück</button></a>
-	                    <button type="button" id="weiter" name="weiter" onclick="auswahl_weiter()" class="weiter">Weiter</button>
+	                    <button type="button" id="weiter" name="weiter" onclick="auswahl_weiter();set('auswahl')" class="weiter">Weiter</button>
 	                </div>
                 </div>
                 <div class="option" id="option">
                     <div class="input">
                         <div class="person">
                             <p>Anzahl Personen:</p>
-                            <select class="select" name="person">
+                            <select class="select" name="person" id="persons">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -72,13 +74,13 @@
                         </div>
                         <div class="extra">
                             <p>Weitere Mitfahrer automatisch zuordnen</p>
-                            <input type="checkbox" name="" value="">
+                            <input type="checkbox" name="" value="" id="passenger">
                             <a href="#" onclick="info_pressed()"><img src="img/info.png" alt="info" class="icon_button"></a>
                         </div>
                     </div>
                     <div class="buttons">
 	                    <button type="button" id="zuruck" name="zuruck" onclick="option_zuruck()" class="zuruck">Zurück</button>
-	                    <button type="button" id="weiter" name="weiter" onclick="option_weiter()" class="weiter">Weiter</button>
+	                    <button type="button" id="weiter" name="weiter" onclick="option_weiter();set('option');update()" class="weiter">Weiter</button>
 	                </div>
                 </div>
                 <div class="prufen" id="prufen">
