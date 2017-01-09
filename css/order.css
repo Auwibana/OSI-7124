@@ -151,8 +151,7 @@ button:active {
 
 .last {
 	display: flex;
-	flex-direction: column;
-	align-self: center;
+	justify-content: center;
 	align-items: center;
 }
 
