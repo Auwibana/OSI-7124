@@ -97,3 +97,23 @@ button {
 	align-items: center;
 	align-self: left;
 }
+
+.option {
+    display: none;
+}
+
+.prufen {
+    display: none;
+}
+
+.bestatigen {
+    display: none;
+}
+
+.info {
+    display: none;
+}
+
+.last {
+    display: none;
+}
