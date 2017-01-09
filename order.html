@@ -3,51 +3,119 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/order.css">
+        <script src="js/order.js"></script>
         <title>Order</title>
     </head>
     <body>
+        <header>
+            <h1 id="logo">OSI-7124</h1>
+            <a href="#"><span>Anmelden</span></a>
+            <a href="#"><span>Registrieren</span></a>
+        </header>
         <div class="orderframe">
             <div class="progressframe">
-                <p id="auswahl">Auswahl</p>
+                <p id="p_auswahl" onclick="auswahl_pressed()">Auswahl</p>
                 <p>></p>
-                <p id="option">Optionen</p>
+                <p id="p_option" onclick="option_pressed()">Optionen</p>
                 <p>></p>
-                <p id="prufen">Prüfen</p>
+                <p id="p_prufen" onclick="prufen_pressed()">Prüfen</p>
                 <p>></p>
-                <p id="bestatigen">Bestätigen</p>
+                <p id="p_bestatigen" onclick="bestatigen_pressed()">Bestätigen</p>
             </div>
             <div class="frame">
-                <div class="auswahl">
-                    <p>Start</p>
-                    <div class="start">
-                        <img src="" alt="">
-                        <input type="text" name="start" value="">
-                        <a href="#"><img src="" alt="current Location"></a>
-                    </div>
-                    <p>Ziel</p>
-                    <div class="ziel">
-                        <img src="" alt="">
-                        <input type="text" name="ziel" value="">
-                        <a href="#"><img src="" alt="map"></a>
-                        <a href="#"><img src="" alt="home"></a>
-                    </div>
-                    <p>Zeit</p>
-                    <div class="zeit">
-
+                <div class="auswahl" id="auswahl">
+					<div class="input">
+	                    <div class="start">
+                            <span class="headlines">Start</span>
+	                        <img src="img/green_map_pin.png" alt="green_map_pin" class="map_pin">
+	                        <input type="text" name="start" id="start" value="">
+	                        <a href="#" onclick="set_current_location()"><img src="img/current_location.png" alt="current Location" class="icon_button"></a>
+	                    </div>
+	                    <div class="ziel">
+                            <span class="headlines">Ziel</span>
+	                        <img src="img/red_map_pin.png" alt="red_map_pin" class="map_pin">
+	                        <input type="text" name="ziel" id="ziel" value="">
+	                        <a href="#"><img src="img/map.png" alt="map" class="icon_button"></a>
+	                        <a href="#" onclick="set_destination()"><img src="img/home.png" alt="home" class="icon_button"></a>
+	                    </div>
+	                    <div class="zeit">
+                            <span class="headlines">Zeit</span>
+	                        <img src="img/calendar.png" alt="calendar" id="calendar" class="icon_button">
+                            <input type="date" name="" value="">
+                            <img src="img/clock.png" alt="clock" class="icon_button">
+                            <input type="time" name="" value="">
+	                    </div>
+					</div>
+	                <div class="buttons">
+	                    <a href="index.html"><button type="button" id="zuruck" name="zuruck" class="zuruck">Zurück</button></a>
+	                    <button type="button" id="weiter" name="weiter" onclick="auswahl_weiter()" class="weiter">Weiter</button>
+	                </div>
+                </div>
+                <div class="option" id="option">
+                    <div class="input">
+                        <div class="person">
+                            <p>Anzahl Personen:</p>
+                            <select class="select" name="person">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="zwischenstops">
+                            <p>Zwischenstops:</p>
+                            <img src="img/yellow_map_pin.png" alt="yellow_map_pin" class="map_pin">
+                            <input type="text" name="" value="">
+                            <a href="#"><img src="img/plus.png" alt="+" class="icon_button"></a>
+                            <a href="#"><img src="img/map.png" alt="map" class="icon_button"></a>
+                        </div>
+                        <div class="extra">
+                            <p>Weitere Mitfahrer automatisch zuordnen</p>
+                            <input type="checkbox" name="" value="">
+                            <a href="#" onclick="info_pressed()"><img src="img/info.png" alt="info" class="icon_button"></a>
+                        </div>
                     </div>
                     <div class="buttons">
-                        <button type="button" name="zurück">Zurück</button>
-                        <button type="button" name="weiter">Weiter</button>
+	                    <button type="button" id="zuruck" name="zuruck" onclick="option_zuruck()" class="zuruck">Zurück</button>
+	                    <button type="button" id="weiter" name="weiter" onclick="option_weiter()" class="weiter">Weiter</button>
+	                </div>
+                </div>
+                <div class="prufen" id="prufen">
+                    <div class="input">
+                        <div class="autotyp">
+
+                        </div>
+                        <div class="preis">
+                            <p>Preis:</p>
+                            <p id="preis"></p>
+                        </div>
                     </div>
+                    <div class="buttons">
+	                    <button type="button" id="zuruck" name="zuruck" onclick="prufen_zuruck()" class="zuruck">Zurück</button>
+	                    <button type="button" id="weiter" name="weiter" onclick="prufen_weiter()" class="weiter">Weiter</button>
+	                </div>
                 </div>
-                <div class="option">
-
+                <div class="bestatigen" id="bestatigen">
+                    <h2 id="bestellung">Bestellung abschließen</h2>
+                    <p>Preis:</p>
+                    <p id="preis"></p>
+                    <button type="button" name="zuruck" class="zuruck">Zurück</button>
+                    <button type="button" name="bestellen" onclick="bestatigen_weiter()" class="weiter">kostenpflichtig Bestellen</button>
                 </div>
-                <div class="prufen">
-
+                <div class="info" id="info">
+                    <h1 id="info_headline">Info</h1>
+                    <h3>Was passiert, wenn der Haken gesetzt ist?</h3>
+                    <p>Unsere Software wird Ihnen weitere Mitfahrer zuordnen, um die Kapazität des Autos optimal zu nutzen.</p>
+                    <h3>Welchen Vorteil hat es weitere Mitfahrer mitzunehmen?</h3>
+                    <p></p>
+                    <button type="button" name="ok" id="ok" class="weiter" onclick="info_ok_pressed()">Ok</button>
                 </div>
-                <div class="bestatigen">
-
+                <div class="last" id="last">
+                    <h1 class="sucess_headline">Auto erfolreich bestellt!</h1>
+                    <p>Wartezeit:</p>
+                    <p></p>
+                    <a href="index.html"><button type="button" id="weiter" name="weiter" class="weiter">Ok</button></a>
                 </div>
             </div>
         </div>

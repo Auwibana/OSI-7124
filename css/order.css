@@ -1,8 +1,203 @@
+header {
+    background-color: grey;
+}
+
+body {
+    background-color: lightgrey;
+}
+
 .progressframe{
     display: flex;
     flex-direction: row;
 	justify-content: space-around;
-    color: red;
+    color: white;
+	background-color: lightblue;
+}
+
+#p_auswahl {
+	color: red;
+}
+
+.orderframe {
+	position: relative;
+	top: 200px;
+	left: 25%;
+    width: 50%;
+    height: 100%;
+	background-color: white;
+}
+
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	padding: 8px 8px;
+}
+
+.weiter {
+    display: inline-block;
+	font-size: 15px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: green;
+	border: none;
+	border-radius: 10px;
+}
+
+.weiter:hover {
+    background-color: darkgreen; /* Green */
+}
+
+.weiter:active {
+	background-color: rgb(110, 200, 86);
+}
+
+.zuruck {
+    display: inline-block;
+	font-size: 15px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: green;
+	border: none;
+	border-radius: 10px;
+}
+
+.zuruck:hover {
+    background-color: darkgreen; /* Green */
+}
+
+.zuruck:active {
+	background-color: rgb(110, 200, 86);
+}
+
+.auswahl .input {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.start {
+	display: flex;
+	align-items: center;
+	align-self: left;
+	margin-left: 25%;
+}
+
+.ziel {
+	display: flex;
+	align-items: center;
+	align-self: left;
+	margin-left: 25%;
+}
+
+.zeit {
+	display: flex;
+	align-items: center;
+	align-self: left;
+	margin-left: 25%;
+}
+
+.icon_button {
+	height: auto;
+	width: 20px;
+	padding: 1px 3px;
+}
+
+.map_pin {
+	height: auto;
+	width: 15px;
+	padding: 3px 3px;
+}
+
+.option .input {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-left: 25%;
+
+}
+
+.person {
+	display: flex;
+	align-items: center;
+	align-self: left;
+}
+
+.zwischenstops {
+	display: flex;
+	align-items: center;
+	align-self: left;
+}
+
+.extra {
+	display: flex;
+	align-items: center;
+	align-self: left;
+}
+
+.prufen .input {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-left: 25%;
+}
+
+.autotyp {
+	display: flex;
+	align-items: center;
+	align-self: left;
+}
+
+.preis {
+	display: flex;
+	align-items: center;
+	align-self: left;
+}
+
+.bestatigen {
+	display: flex;
+	flex-direction: column;
+	align-self: left;
+	align-items: left;
+	margin-left: 25%;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	align-self: left;
+	align-items: left;
+}
+
+.last {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.option {
+	display: none;
+}
+
+.prufen {
+	display: none;
+}
+
+.bestatigen {
+	display: none;
+}
+
+.info {
+	display: none;
+}
+
+.last {
+	display: none;
 }
 
 .orderframe {
