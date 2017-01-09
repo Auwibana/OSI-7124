@@ -199,29 +199,3 @@ body {
 .last {
 	display: none;
 }
-
-.orderframe {
-	position: relative;
-	top: 200px;
-	left: 25%;
-    width: 50%;
-    height: 100%;
-	background-color: powderblue;
-}
-
-button {
-	background-color: #4CAF50; /* Green */
-	border: none;
-	color: white;
-	padding: 7px 12px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 12px;
-	border-radius: 10px;
-}
-
-#weiter {
-	position: absolute;
-    float: right;
-}
