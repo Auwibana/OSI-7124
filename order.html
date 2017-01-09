@@ -9,13 +9,13 @@
     <body>
         <div class="orderframe">
             <div class="progressframe">
-                <p id="p_auswahl">Auswahl</p>
+                <p id="p_auswahl" onclick="auswahl_pressed()">Auswahl</p>
                 <p>></p>
-                <p id="p_option">Optionen</p>
+                <p id="p_option" onclick="option_pressed()">Optionen</p>
                 <p>></p>
-                <p id="p_prufen">Prüfen</p>
+                <p id="p_prufen" onclick="prufen_pressed()">Prüfen</p>
                 <p>></p>
-                <p id="p_bestatigen">Bestätigen</p>
+                <p id="p_bestatigen" onclick="bestatigen_pressed()">Bestätigen</p>
             </div>
             <div class="frame">
                 <!----><div class="auswahl" id="auswahl">
@@ -98,7 +98,7 @@
                     <p id="bestellung">Bestellung abschließen</p>
                     <p>Preis:</p>
                     <p id="preis"></p>
-                    <button type="button" name="bestellen">kostenpflichtig Bestellen</button>
+                    <button type="button" name="bestellen" onclick="bestatigen_weiter()">kostenpflichtig Bestellen</button>
                 </div>
                 <div class="info" id="info">
                     <h1 id="info_headline">Info</h1>
