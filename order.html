@@ -9,13 +9,13 @@
     <body>
         <div class="orderframe">
             <div class="progressframe">
-                <p id="auswahl">Auswahl</p>
+                <p id="p_auswahl">Auswahl</p>
                 <p>></p>
-                <p id="option">Optionen</p>
+                <p id="p_option">Optionen</p>
                 <p>></p>
-                <p id="prufen">Prüfen</p>
+                <p id="p_prufen">Prüfen</p>
                 <p>></p>
-                <p id="bestatigen">Bestätigen</p>
+                <p id="p_bestatigen">Bestätigen</p>
             </div>
             <div class="frame">
                 <!----><div class="auswahl" id="auswahl">
@@ -39,12 +39,11 @@
                             <input type="date" name="" value="">
                             <img src="" alt="clock">
                             <input type="time" name="" value="">
-                            <p id="demo" onclick="myFunction()">Click me to change my text color.</p>
 	                    </div>
 					</div>
 	                <div class="buttons">
-	                    <button type="button" id="zuruck" name="zuruck" onclick="">Zurück</button>
-	                    <button type="button" id="weiter" name="weiter">Weiter</button>
+	                    <button type="button" id="zuruck" name="zuruck">Zurück</button>
+	                    <button type="button" id="weiter" name="weiter" onclick="auswahl_weiter()">Weiter</button>
 	                </div>
                 </div>
                 <div class="option" id="option">
@@ -73,8 +72,8 @@
                         </div>
                     </div>
                     <div class="buttons">
-	                    <button type="button" id="zuruck" name="zuruck">Zurück</button>
-	                    <button type="button" id="weiter" name="weiter">Weiter</button>
+	                    <button type="button" id="zuruck" name="zuruck" onclick="option_zuruck()">Zurück</button>
+	                    <button type="button" id="weiter" name="weiter" onclick="option_weiter()">Weiter</button>
 	                </div>
                 </div>
                 <div class="prufen" id="prufen">
@@ -91,8 +90,8 @@
                         </div>
                     </div>
                     <div class="buttons">
-	                    <button type="button" id="zuruck" name="zuruck">Zurück</button>
-	                    <button type="button" id="weiter" name="weiter">Weiter</button>
+	                    <button type="button" id="zuruck" name="zuruck" onclick="prufen_zuruck()">Zurück</button>
+	                    <button type="button" id="weiter" name="weiter" onclick="prufen_weiter()">Weiter</button>
 	                </div>
                 </div>
                 <div class="bestatigen" id="bestatigen">
