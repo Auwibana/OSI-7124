@@ -29,7 +29,7 @@ header {
 	padding: 8px 8px;
 }
 
-button {
+.weiter {
     display: inline-block;
 	font-size: 15px;
 	cursor: pointer;
@@ -42,11 +42,32 @@ button {
 	border-radius: 10px;
 }
 
-button:hover {
+.weiter:hover {
     background-color: darkgreen; /* Green */
 }
 
-button:active {
+.weiter:active {
+	background-color: rgb(110, 200, 86);
+}
+
+.zuruck {
+    display: inline-block;
+	font-size: 15px;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	color: #fff;
+	background-color: green;
+	border: none;
+	border-radius: 10px;
+}
+
+.zuruck:hover {
+    background-color: darkgreen; /* Green */
+}
+
+.zuruck:active {
 	background-color: rgb(110, 200, 86);
 }
 

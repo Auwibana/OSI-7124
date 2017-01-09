@@ -28,15 +28,15 @@
 	                    <div class="start">
                             <span class="headlines">Start</span>
 	                        <img src="img/green_map_pin.png" alt="green_map_pin" class="map_pin">
-	                        <input type="text" name="start" value="">
-	                        <a href="#"><img src="img/current_location.png" alt="current Location" class="icon_button"></a>
+	                        <input type="text" name="start" id="start" value="">
+	                        <a href="#" onclick="set_current_location()"><img src="img/current_location.png" alt="current Location" class="icon_button"></a>
 	                    </div>
 	                    <div class="ziel">
                             <span class="headlines">Ziel</span>
 	                        <img src="img/red_map_pin.png" alt="red_map_pin" class="map_pin">
-	                        <input type="text" name="ziel" value="">
+	                        <input type="text" name="ziel" id="ziel" value="">
 	                        <a href="#"><img src="img/map.png" alt="map" class="icon_button"></a>
-	                        <a href="#"><img src="img/home.png" alt="home" class="icon_button"></a>
+	                        <a href="#" onclick="set_destination()"><img src="img/home.png" alt="home" class="icon_button"></a>
 	                    </div>
 	                    <div class="zeit">
                             <span class="headlines">Zeit</span>
@@ -47,8 +47,8 @@
 	                    </div>
 					</div>
 	                <div class="buttons">
-	                    <a href="index.html"><button type="button" id="zuruck" name="zuruck">Zurück</button></a>
-	                    <button type="button" id="weiter" name="weiter" onclick="auswahl_weiter()">Weiter</button>
+	                    <a href="index.html"><button type="button" id="zuruck" name="zuruck" class="zuruck">Zurück</button></a>
+	                    <button type="button" id="weiter" name="weiter" onclick="auswahl_weiter()" class="weiter">Weiter</button>
 	                </div>
                 </div>
                 <div class="option" id="option">
@@ -77,8 +77,8 @@
                         </div>
                     </div>
                     <div class="buttons">
-	                    <button type="button" id="zuruck" name="zuruck" onclick="option_zuruck()">Zurück</button>
-	                    <button type="button" id="weiter" name="weiter" onclick="option_weiter()">Weiter</button>
+	                    <button type="button" id="zuruck" name="zuruck" onclick="option_zuruck()" class="zuruck">Zurück</button>
+	                    <button type="button" id="weiter" name="weiter" onclick="option_weiter()" class="weiter">Weiter</button>
 	                </div>
                 </div>
                 <div class="prufen" id="prufen">
@@ -95,15 +95,16 @@
                         </div>
                     </div>
                     <div class="buttons">
-	                    <button type="button" id="zuruck" name="zuruck" onclick="prufen_zuruck()">Zurück</button>
-	                    <button type="button" id="weiter" name="weiter" onclick="prufen_weiter()">Weiter</button>
+	                    <button type="button" id="zuruck" name="zuruck" onclick="prufen_zuruck()" class="zuruck">Zurück</button>
+	                    <button type="button" id="weiter" name="weiter" onclick="prufen_weiter()" class="weiter">Weiter</button>
 	                </div>
                 </div>
                 <div class="bestatigen" id="bestatigen">
                     <p id="bestellung">Bestellung abschließen</p>
                     <p>Preis:</p>
                     <p id="preis"></p>
-                    <button type="button" name="bestellen" onclick="bestatigen_weiter()">kostenpflichtig Bestellen</button>
+                    <button type="button" name="zuruck" class="zuruck">Zurück</button>
+                    <button type="button" name="bestellen" onclick="bestatigen_weiter()" class="weiter">kostenpflichtig Bestellen</button>
                 </div>
                 <div class="info" id="info">
                     <h1 id="info_headline">Info</h1>
@@ -117,7 +118,7 @@
                     <h1 class="sucess_headline">Auto erfolreich bestellt!</h1>
                     <p>Wartezeit:</p>
                     <p></p>
-                    <button type="button" id="weiter" name="weiter">Weiter</button>
+                    <button type="button" id="weiter" name="weiter" class="weiter">Ok</button>
                 </div>
             </div>
         </div>

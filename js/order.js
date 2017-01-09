@@ -90,3 +90,11 @@ function bestatigen_weiter() {
 	document.getElementById("bestatigen").style.display = "none";
 	document.getElementById("p_bestatigen").style.color = "white";
 }
+
+function set_current_location() {
+    document.getElementById("start").value = "Hannover";
+}
+
+function set_destination() {
+    document.getElementById("ziel").value = "Home";
+}
