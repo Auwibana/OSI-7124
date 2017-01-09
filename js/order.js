@@ -85,10 +85,31 @@ function prufen_weiter() {
 	document.getElementById("p_prufen").style.color = "white";
 }
 
+function bestatigen_zuruck() {
+	document.getElementById("bestatigen").style.display = "none";
+	document.getElementById("prufen").style.display = "inherit";
+	document.getElementById("p_bestatigen").style.color = "white";
+	document.getElementById("p_prufen").style.color = "red";
+}
+
 function bestatigen_weiter() {
 	document.getElementById("last").style.display = "inherit";
 	document.getElementById("bestatigen").style.display = "none";
 	document.getElementById("p_bestatigen").style.color = "white";
+}
+
+function info_pressed() {
+    document.getElementById("option").style.display = "none";
+    document.getElementById("info").style.display = "inherit";
+    document.getElementById("p_auswahl").innerHTML = "Info";
+    document.getElementById("p_auswahl").style.color = "red";
+}
+
+function info_ok_pressed() {
+    document.getElementById("option").style.display = "inherit";
+    document.getElementById("info").style.display = "none";
+    document.getElementById("p_auswahl").innerHTML = "Auswahl";
+    document.getElementById("p_auswahl").style.color = "white";
 }
 
 function set_current_location() {
