@@ -72,7 +72,7 @@
                         <div class="zwischenstops">
                             <p>Zwischenstops:</p>
                             <img src="img/yellow_map_pin.png" alt="yellow_map_pin" class="map_pin">
-                            <input type="text" name="" value="">
+                            <input type="text" name="" value="" id="zwischenstops">
                             <a href="#"><img src="img/plus.png" alt="+" class="icon_button"></a>
                             <a href="#"><img src="img/map.png" alt="map" class="icon_button"></a>
                         </div>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="buttons">
 	                    <button type="button" id="zuruck" name="zuruck" onclick="option_zuruck()" class="zuruck">Zurück</button>
-	                    <button type="button" id="weiter" name="weiter" onclick="option_weiter();set('option');update()" class="weiter">Weiter</button>
+	                    <button type="button" id="weiter" name="weiter" onclick="option_weiter();set('option');update();" class="weiter">Weiter</button>
 	                </div>
                 </div>
                 <div class="prufen" id="prufen">
@@ -108,11 +108,7 @@
 							</div>
                             <div class="zwischenstops_p">
                                 <p>Zwischenstops:</p>
-                                <ul>
-                                    <li>Test</li>
-                                    <li>Test</li>
-                                    <li>Test</li>
-                                    <li>Test</li>
+                                <ul id="zwischenList">
                                 </ul>
                             </div>
                         </div>
@@ -142,7 +138,7 @@
                 </div>
                 <div class="last" id="last">
                     <h1 class="sucess_headline">Auto erfolreich bestellt!</h1>
-                    <p>Wartezeit:</p>
+                    <p id="wartezeit">Wartezeit:</p>
                     <p></p>
                     <a href="infoPage.html"><button type="button" id="weiter" name="weiter" class="weiter">Ok</button></a>
                 </div>
