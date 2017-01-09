@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/order.css">
-        <script type="text/javascript" src="js/order.js"></script>
+        <script src="js/order.js"></script>
         <title>Order</title>
     </head>
     <body>
@@ -18,7 +18,7 @@
                 <p id="bestatigen">Bestätigen</p>
             </div>
             <div class="frame">
-                <!----><div class="auswahl">
+                <!----><div class="auswahl" id="auswahl">
 					<div class="input">
 	                    <div class="start">
                             <span class="headlines">Start</span>
@@ -39,15 +39,15 @@
                             <input type="date" name="" value="">
                             <img src="" alt="clock">
                             <input type="time" name="" value="">
+                            <p id="demo" onclick="myFunction()">Click me to change my text color.</p>
 	                    </div>
 					</div>
 	                <div class="buttons">
-						<p id="test">TEST</p>
-	                    <button type="button" id="zuruck" name="zuruck" onclick="test()">Zurück</button>
+	                    <button type="button" id="zuruck" name="zuruck" onclick="">Zurück</button>
 	                    <button type="button" id="weiter" name="weiter">Weiter</button>
 	                </div>
                 </div>
-                <div class="option">
+                <div class="option" id="option">
                     <div class="input">
                         <div class="person">
                             <p>Anzahl Personen:</p>
@@ -77,7 +77,7 @@
 	                    <button type="button" id="weiter" name="weiter">Weiter</button>
 	                </div>
                 </div>
-                <div class="prufen">
+                <div class="prufen" id="prufen">
                     <div class="input">
                         <div class="autotyp">
                             <p>Autotyp:</p>
@@ -95,22 +95,22 @@
 	                    <button type="button" id="weiter" name="weiter">Weiter</button>
 	                </div>
                 </div>
-                <div class="bestatigen">
+                <div class="bestatigen" id="bestatigen">
                     <p id="bestellung">Bestellung abschließen</p>
                     <p>Preis:</p>
                     <p id="preis"></p>
                     <button type="button" name="bestellen">kostenpflichtig Bestellen</button>
                 </div>
-                <div class="info">
-                    <h1 class="info">Info</h1>
+                <div class="info" id="info">
+                    <h1 id="info_headline">Info</h1>
                     <h3>Was passiert, wenn der Haken gesetzt ist?</h3>
                     <p>Unsere Software wird Ihnen weitere Mitfahrer zuordnen, um die Kapazität des Autos optimal zu nutzen.</p>
                     <h3>Welchen Vorteil hat es weitere Mitfahrer mitzunehmen?</h3>
                     <p></p>
                     <button type="button" name="ok" id="ok">Ok</button>
                 </div>
-                <div class="last">
-                    <h1 class="sucess">Auto erfolreich bestellt!</h1>
+                <div class="last" id="last">
+                    <h1 class="sucess_headline">Auto erfolreich bestellt!</h1>
                     <p>Wartezeit:</p>
                     <p></p>
                     <button type="button" id="weiter" name="weiter">Weiter</button>
