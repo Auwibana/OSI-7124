@@ -30,30 +30,30 @@ origins = *
 
 */
 
-var request = new XMLHttpRequest();
+var requestGet = new XMLHttpRequest();
 
-request.onreadystatechange = function() {
-	// console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
-	// console.log(request.responseText);
-	if (request.readyState == 4) {
-		if (request.status == 200) {
-			var response = JSON.parse(request.responseText);
-			handlers[response._id](response);
+requestGet.onreadystatechange = function() {
+	// console.log("onreadystatechange: " + requestGet.readyState + ", " +  requestGet.status);
+	// console.log(requestGet.responseText);
+	if (requestGet.readyState == 4) {
+		if (requestGet.status == 200) {
+			var response = JSON.parse(requestGet.responseText);
+			handlersGet[response._id](response);
 		}
-		if (request.status == 404) {
-			console.log("not found: " + request.responseText);
+		if (requestGet.status == 404) {
+			console.log("not found: " + requestGet.responseText);
 		}
 	}
 };
 
 function get(variable) {
 	// console.log("get " + variable);
-	request.open("GET", dburl + variable, false);
-	request.send();
+	requestGet.open("GET", dburl + variable, false);
+	requestGet.send();
 }
 
 function update() {
-	for (var name in handlers) {
+	for (var name in handlersGet) {
 		// console.log("updating " + name);
 		get(name);
 	}
@@ -65,15 +65,17 @@ function update() {
 
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
-var handlers = {
-	"option" : option,
-	"auswahl": auswahl
+var handlersGet = {
+	"option" : optionGet,
+	"auswahl": auswahlGet
 };
 
-function auswahl(response) {
-
+function auswahlGet(response) {
+	document.getElementById('standort_p').innerHTML = response.start
+	document.getElementById('ziel_p').innerHTML = response.end
 }
 
-function option(response) {
-	document.getElementById('preis').innerHTML = 20+response.persons*5
+function optionGet(response) {
+	document.getElementById('preis_p').innerHTML = 20+response.persons*5 +"€"
+	document.getElementById('preis').innerHTML = 20+response.persons*5 +"€"
 }
