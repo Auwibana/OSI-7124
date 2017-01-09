@@ -166,7 +166,12 @@ body {
 .prufen .input {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-around;
+}
+
+.location_p {
+    display: flex;
+    flex-direction: column;
 }
 
 .standort_p {
@@ -188,13 +193,13 @@ body {
 }
 
 .zwischenstops_p {
-	margin-left: 40px;
+	display: flex;
+    justify-content: center;
 }
 
 .preis_p {
 	display: flex;
-	justify-content: space-between;;
-	margin-right: 40px;
+	justify-content: space-around;
 }
 
 #preis_p {
@@ -204,7 +209,7 @@ body {
 .preis_standort {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .autotyp {
