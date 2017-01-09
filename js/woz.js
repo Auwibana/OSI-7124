@@ -38,6 +38,7 @@ request.onreadystatechange = function() {
 	if (request.readyState == 4) {
 		if (request.status == 200) {
 			var response = JSON.parse(request.responseText);
+			console.log(handlers[response._id])
 			handlers[response._id](response);
 		}
 		if (request.status == 404) {
@@ -67,7 +68,6 @@ function getCheckedRadio(name) {
 }
 
 function set(name) {
-	console.log("Test")
 	request.open("GET", dburl + name, false);
 	request.send();
 }
@@ -100,6 +100,7 @@ var handlers = {
 };
 
 function auswahl(response) {
+	console.log("start")
 		var start = document.getElementById("start").value
 		var end = document.getElementById("ziel").value
 		var date = document.getElementById("date").value
