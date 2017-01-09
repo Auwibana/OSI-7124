@@ -16,7 +16,7 @@ h1 {
 	color: black;
 	font-size: 150px;
 	text-align: center;
-	margin-bottom: 50%;
+	margin-bottom: 8%;
 	margin-top: 0px;
 }
 
@@ -26,4 +26,9 @@ h1 {
 
 button {
 	font-size: 80px;
+}
+
+#map {
+	margin-top: 0px;
+	margin-bottom: 10%;
 }
