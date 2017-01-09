@@ -1,3 +1,5 @@
-https://www.google.com/permissions/images/maps-att.png
 
-Grafik für die Map
+
+if(window.location.search != ""){
+	document.getElementById("map").src = https://www.google.com/permissions/images/maps-att.png;
+}
