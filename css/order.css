@@ -1,3 +1,7 @@
+header {
+    background-color: grey;
+}
+
 .progressframe{
     display: flex;
     flex-direction: row;

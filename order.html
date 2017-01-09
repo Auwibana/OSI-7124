@@ -7,6 +7,11 @@
         <title>Order</title>
     </head>
     <body>
+        <header>
+            <h1 id="logo">OSI-7124</h1>
+            <a href="#"><span>Anmelden</span></a>
+            <a href="#"><span>Registrieren</span></a>
+        </header>
         <div class="orderframe">
             <div class="progressframe">
                 <p id="p_auswahl">Auswahl</p>
@@ -35,14 +40,14 @@
 	                    </div>
 	                    <div class="zeit">
                             <span class="headlines">Zeit</span>
-	                        <img src="" alt="time" id="calendar">
+	                        <img src="img/calendar.png" alt="calendar" id="calendar" class="icon_button">
                             <input type="date" name="" value="">
-                            <img src="" alt="clock">
+                            <img src="img/clock.png" alt="clock" class="icon_button">
                             <input type="time" name="" value="">
 	                    </div>
 					</div>
 	                <div class="buttons">
-	                    <button type="button" id="zuruck" name="zuruck">Zurück</button>
+	                    <a href="index.html"><button type="button" id="zuruck" name="zuruck">Zurück</button></a>
 	                    <button type="button" id="weiter" name="weiter" onclick="auswahl_weiter()">Weiter</button>
 	                </div>
                 </div>
