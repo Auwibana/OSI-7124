@@ -1,4 +1,84 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OSI-7124</title>
+
+	<script src="js/infoPage.js"> </script>
+
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	  <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+	    <div class="container-fluid">
+	      <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+	          <span class="sr-only">Toggle navigation</span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	        </button>
+	        <a class="navbar-brand" href="index.html">OSI-7124</a>
+	      </div>
+
+	      <!-- Collect the nav links, forms, and other content for toggling -->
+	      <div class="collapse navbar-collapse" id="navbar">
+	        <ul class="nav navbar-nav">
+	          <li><a href="#"></a></li>
+
+	        </ul>
+	        <ul class="nav navbar-nav navbar-right">
+              <li><a href="#"><span class="glyphicon glyphicon-user"> Registrieren</a></li>
+	          <li><a href="#"><span class="glyphicon glyphicon-log-in"> Anmelden</a></li>
+	        </ul>
+	      </div><!-- /.navbar-collapse -->
+	    </div><!-- /.container-fluid -->
+	  </nav>
+
+	  <div class="jumbotron text-center">
+	    <h1>OSI-7124</h1>
+	    <p>Lorem ipsum dolor sit amet.</p>
+	  </div>
+
+	  <div class="container">
+		  <div class="row">
+			  <div class="col-md-12">
+				<div id="map" style="width:100%;height:400px"></div>
+				<div id="directionsPanel" style="float:right;width:30%;height 100%"></div>
+			  </div>
+		  </div>
+
+		  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx0jxbskZB744V0-NKGVaW0VeTnwfIyY&callback=myMap"></script>
+
+		  <br>
+	  </div>
+
+	  <div class="container">
+		  <div class="btn-group btn-group-justified">
+			  <label class="btn btn-primary" id="waitingtime">Wartezeit: 5 Minuten</label>
+			  <a href="#" class="btn btn-primary">Weiteres Auto bestllen</a>
+		  </div>
+	  </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+<!--<!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" href="css/infoPage.css">
@@ -9,7 +89,7 @@
 	<div id="siteContainer">
 		<div id="Title">
 			<h1 id="osi"> OSI-7124 </h1>
-			
+
 			<div id="map" style="width:100%;height:400px"></div>
 			<div id="directionsPanel" style="float:right;width:30%;height 100%"></div>
 
@@ -23,4 +103,4 @@
 		</div>
 	</div>
 </body>
-</html>
+</html>-->
