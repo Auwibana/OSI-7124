@@ -1,4 +1,4 @@
-function auswahl_pressed() {
+/*function auswahl_pressed() {
 	document.getElementById("auswahl").style.display = "inherit";
 	document.getElementById("option").style.display = "none";
 	document.getElementById("prufen").style.display = "none";
@@ -118,4 +118,49 @@ function set_current_location() {
 
 function set_destination() {
     document.getElementById("ziel").value = "Home";
-}
+}*/
+
+$(document).ready(function () {
+  var navListItems = $('div.setup-panel div a'),
+          allWells = $('.setup-content'),
+          allNextBtn = $('.nextBtn');
+
+  allWells.hide();
+
+  navListItems.click(function (e) {
+      e.preventDefault();
+      var $target = $($(this).attr('href')),
+              $item = $(this);
+
+      if (!$item.hasClass('disabled')) {
+          navListItems.removeClass('btn-primary').addClass('btn-default');
+          $item.addClass('btn-primary');
+          allWells.hide();
+          $target.show();
+          $target.find('input:eq(0)').focus();
+      }
+  });
+
+  allNextBtn.click(function(){
+      var curStep = $(this).closest(".setup-content"),
+          curStepBtn = curStep.attr("id"),
+          nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+          curInputs = curStep.find("input[type='text'],input[type='url']"),
+          isValid = true;
+
+      $(".form-group").removeClass("has-error");
+      for(var i=0; i<curInputs.length; i++){
+          if (!curInputs[i].validity.valid){
+              isValid = false;
+              $(curInputs[i]).closest(".form-group").addClass("has-error");
+          }
+      }
+
+      if (isValid)
+          nextStepWizard.removeAttr('disabled').trigger('click');
+  });
+
+	var date = $('#datepicker').datepicker({ dateFormat: 'dd.mm.yy' }).val();
+
+  $('div.setup-panel div a.btn-primary').trigger('click');
+});
