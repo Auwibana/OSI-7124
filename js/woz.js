@@ -109,8 +109,10 @@ function auswahl(response) {
 }
 
 function option(response) {
-		var persons = document.getElementById("persons").value
-		var passenger = document.getElementById("passenger").checked
+		var persons = $( '#passenger_select' ).val()
+		//var e = document.getElementById("passenger_select");
+		//var passenger = e.options[e.selectedIndex].value;
+
 		var zwischenstops = document.getElementById("zwischenstops").value
 		put(response, {"persons" : persons, "passenger": passenger, "zwischenstops":zwischenstops});
 }
