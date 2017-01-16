@@ -24,6 +24,7 @@ function initService() {
   // hier muss das input field vom type text stehen
   var start = document.getElementById('start');
   var ziel = document.getElementById('ziel');
+  var zwischenstops = document.getElementById('zwischenstops');
 
   // das ist das SearchBox Objekt das die Suggestions handled
   var searchStart = new google.maps.places.SearchBox(start, {
@@ -42,6 +43,14 @@ function initService() {
     componentRestrictions: {country: 'de'}
   });
 
+  var searchZwischenstops = new google.maps.places.SearchBox(zwischenstops, {
+    //bounds: defaultBounds
+
+    // das hier beschränkt die suche auf Deutschland
+    // habe aber nicht das gefühl das die restriction wirklich functioniert
+    componentRestrictions: {country: 'de'}
+  });
+
   // hier mit kann man die Suche auf die Umgebung des Nutzers beschränken
   // Hier sollte man noch die Dynamamische Position des Users einbauen
   // kann wahrscheinlich aus kommentiert werden
@@ -53,7 +62,7 @@ function initService() {
       return;
     }
     // Sobald sich der Nutzer für eine Adresse entschieden hat das ergbeniss von hier ausgelesen werden.
-    alert(searchStart.getPlaces()[0].formatted_address);
+    //alert(searchStart.getPlaces()[0].formatted_address);
   });
 
   searchZiel.addListener('places_changed', function() {
@@ -63,7 +72,17 @@ function initService() {
       return;
     }
     // Sobald sich der Nutzer für eine Adresse entschieden hat das ergbeniss von hier ausgelesen werden.
-    alert(searchZiel.getPlaces()[0].formatted_address);
+    //alert(searchZiel.getPlaces()[0].formatted_address);
+  });
+
+  searchZwischenstops.addListener('places_changed', function() {
+    var places = searchZwischenstops.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+    // Sobald sich der Nutzer für eine Adresse entschieden hat das ergbeniss von hier ausgelesen werden.
+    //alert(searchZiel.getPlaces()[0].formatted_address);
   });
 }
 

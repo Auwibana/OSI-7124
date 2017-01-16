@@ -152,10 +152,12 @@
                                 <div class="col-sm-9">
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Zwischenstops" id="zwischenstops">
+                                        <input type="text" style="display:none">
+                                        <!-- just because magic happens here-->
                                         <div class="input-group-btn">
                                             <button type="button" class="btn btn-default">
-                                          +
-                                      </button>
+                                                +
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -181,11 +183,11 @@
                                 <div class="col-sm-12">
                                     <div class="panel panel-info">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title"><a href="#" style="cursor: help;"><i>i</i></a></h3>
+                                            <h3 class="panel-title"><i>i</i></h3>
                                         </div>
                                         <div class="panel-body">
                                             <label class="control-label">Weitere Mitfahrer autmatisch zuordnen <input type="checkbox" name="" value="" class="" id="passenger"></label>
-                                            <button type="button" class="btn btn-info pull-right btn-circle" style="cursor: help;" id="opener"><i>i</i></button>
+                                            <button type="button" class="btn btn-info pull-right btn-circle" id="opener"><i>i</i></button>
                                             <div id="wrapper">
                                                 <p>
                                                     <h4>Was passiert, wenn der Haken gesetzt ist?</h4> Unsere Software wird Ihnen weitere Mitfahrer zuordnen, um die Kapazität des Autos optimal zu nutzen.</p>
@@ -262,7 +264,7 @@
                 <div class="col-xs-6 col-md-offset-3">
                     <div class="col-md-12">
                         <h3>Bestätigen</h3>
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="infoPage.html" method="GET">
                             <div class="form-group">
                                 <label class="col-sm-2"></label>
                                 <h2 class="col-sm-8">Bestellung abschließen</h2>
@@ -274,11 +276,9 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <form action="infoPage.html">
-                                        <button class="btn btn-primary pull-right">
+                                    <button type="submit" class="btn btn-primary pull-right">
 								  		Kostenpflichtig bestellen
 										</button>
-                                    </form>
                                     <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
                                 </div>
                             </div>
