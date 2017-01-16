@@ -202,7 +202,6 @@ function auswahl(response) {
 }
 
 function option(response) {
-        alert("Option")
 		var persons = document.getElementById("persons").value
 		var passenger = document.getElementById("passenger").checked
 		var zwischenstops = []
