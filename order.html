@@ -9,9 +9,12 @@
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
         <link rel="stylesheet" type="text/css" href="css/order.css">
+
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx0jxbskZB744V0-NKGVaW0VeTnwfIyY&signed_in=true&libraries=places&callback=initService" async defer></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,7 +24,6 @@
 	    <![endif]-->
     </head>
     <body>
-
         <nav class="navbar navbar-default" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -85,7 +87,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="start" placeholder="Start">
                                         <div class="input-group-btn">
-                                            <button type="button" class="btn btn-default">
+                                            <button type="button" class="btn btn-default" onclick="geolocate()">
                                               <span class="glyphicon glyphicon-screenshot"></span>
                                             </button>
                                         </div>
@@ -149,7 +151,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Zwischenstops" id="zwischenstops">
                                         <div class="input-group-btn">
-                                            <button type="button" class="btn btn-success">
+                                            <button type="button" class="btn btn-default">
                                           +
                                       </button>
                                         </div>
@@ -202,25 +204,25 @@
                     <div class="col-md-12">
                         <h3>Prüfen</h3>
                         <form class="form-horizontal">
-							<div class="form-group">
-								<label class="col-sm-1"></label>
+                            <div class="form-group">
+                                <label class="col-sm-1"></label>
                                 <label class="col-sm-2 control-label">Standort:</label>
                                 <label class="col-sm-2 control-label">Hannover</label>
-								<label class="col-sm-2"></label>
-								<label class="col-sm-2 control-label">Preis:</label>
-								<label class="col-sm-2 control-label">5.30€</label>
+                                <label class="col-sm-2"></label>
+                                <label class="col-sm-2 control-label">Preis:</label>
+                                <label class="col-sm-2 control-label">5.30€</label>
                             </div>
-							<div class="form-group">
-								<label class="col-sm-1"></label>
-								<label class="col-sm-2 control-label">Ziel:</label>
+                            <div class="form-group">
+                                <label class="col-sm-1"></label>
+                                <label class="col-sm-2 control-label">Ziel:</label>
                                 <label class="col-sm-2 control-label">Bremen</label>
-								<label class="col-sm-2"></label>
-								<label class="col-sm-2 control-label">Mitfahrer:</label>
-								<label class="col-sm-2 control-label">3</label>
-							</div>
-							<div class="form-group">
+                                <label class="col-sm-2"></label>
+                                <label class="col-sm-2 control-label">Mitfahrer:</label>
+                                <label class="col-sm-2 control-label">3</label>
+                            </div>
+                            <div class="form-group">
                                 <div class="col-sm-3">
-                                	<label class="col-sm-3 control-label">Zwischenstops:</label>
+                                    <label class="col-sm-3 control-label">Zwischenstops:</label>
                                 </div>
                                 <div class="col-sm-8">
                                     <ul class="list-group">
@@ -237,11 +239,11 @@
                                     </ul>
                                 </div>
                             </div>
-							<div class="form-group">
-	                            <div class="col-sm-12">
-	                                <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
-	                                <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
-	                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
+                                    <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -253,22 +255,22 @@
                     <div class="col-md-12">
                         <h3>Bestätigen</h3>
                         <form class="form-horizontal">
-							<div class="form-group">
-								<label class="col-sm-2"></label>
+                            <div class="form-group">
+                                <label class="col-sm-2"></label>
                                 <h2 class="col-sm-8">Bestellung abschließen</h2>
                             </div>
-							<div class="form-group">
-								<label class="col-sm-2"></label>
-								<label class="col-sm-2">Preis:</label>
-								<label class="col-sm-2 ">5.30€</label>
-							</div>
+                            <div class="form-group">
+                                <label class="col-sm-2"></label>
+                                <label class="col-sm-2">Preis:</label>
+                                <label class="col-sm-2 ">5.30€</label>
+                            </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-									<form action="infoPage.html">
-						                <button class="btn btn-primary finalBtn pull-right">
+                                    <form action="infoPage.html">
+                                        <button class="btn btn-primary finalBtn pull-right">
 								  		Kostenpflichtig bestellen
 										</button>
-						            </form>
+                                    </form>
                                     <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
                                 </div>
                             </div>
