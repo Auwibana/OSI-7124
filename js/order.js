@@ -219,6 +219,9 @@ $(document).ready(function() {
 
     allWells.hide();
 
+    var d = new Date();
+    document.getElementById('date').value = d.getDate() + "." + d.getMonth()+1 + "." + d. getFullYear();
+
     navListItems.click(function(e) {
         e.preventDefault();
         var $target = $($(this).attr('href')),
@@ -273,6 +276,24 @@ $('#opener').click(function() {
     return false;
 });
 
+$('#car_ordered_dialog').dialog({
+	buttons: {
+                OK: function() { //submit
+                    $( this ).dialog( "close" );
+					window.location.href = "infoPage.html";                }
+            },
+	height: 300,
+    width: 300,
+    modal: true,
+    resizable: true,
+    autoOpen: false,
+    title: 'Car Ordered Dialog'
+}).prev(".ui-dialog-titlebar").css("background","rgb(191, 227, 255)");
+
+$('#car_ordered_opener').click(function() {
+    $('#car_ordered_dialog').dialog('open');
+    return false;
+});
 
 $('#time').wickedpicker({
 	twentyFour: true,

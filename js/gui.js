@@ -83,6 +83,7 @@ function auswahlGet(response) {
 function optionGet(response) {
 	document.getElementById('preis_p').innerHTML = 20+response.persons*5 +"€"
 	document.getElementById('preis').innerHTML = 20+response.persons*5 +"€"
+	document.getElementById('passenger_p').innerHTML = response.persons
 	if(response.zwischenstops != ""){
 		document.getElementById('zwischenList').innerHTML = "<li>"+response.zwischenstops+"</li>"
 	}
