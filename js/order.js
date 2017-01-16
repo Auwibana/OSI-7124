@@ -160,7 +160,7 @@ $(document).ready(function() {
             nextStepWizard.removeAttr('disabled').trigger('click');
     });
 
-    var date = $('#datepicker').datepicker({
+    var date = $('#date').datepicker({
         dateFormat: 'dd.mm.yy'
     }).val();
 
