@@ -80,25 +80,39 @@
                         <h3>Auswahl</h3>
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Start</label>
+                                <label for="" class="col-sm-2 control-label">Start</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="" placeholder="Start">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="start" placeholder="Start">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-default">
+                                              <span class="glyphicon glyphicon-screenshot"></span>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Ziel</label>
+                                <label for="" class="col-sm-2 control-label">Ziel</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="" placeholder="Ziel">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ziel" placeholder="Ziel">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-default">
+                                              <span class="glyphicon glyphicon-home"></span>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Datum</label>
+                                <label for="date" class="col-sm-2 control-label">Datum</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="datepicker" placeholder="Datum" /Ó>
+                                    <input type="text" class="form-control" id="date" placeholder="Datum">
                                 </div>
-                                <label for="inputEmail3" class="col-sm-2 control-label">Zeit</label>
+                                <label for="time" class="col-sm-2 control-label">Zeit</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="" placeholder="Zeit">
+                                    <input type="text" class="form-control" id="time" placeholder="Zeit">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -120,12 +134,12 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Mitfahrer</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="">
-                                        <option value="1">0</option>
-                                        <option value="2">1</option>
-                                        <option value="3">2</option>
-                                        <option value="4">3</option>
-                                        <option value="5">4</option>
+                                    <select class="form-control" name="" id="persons">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
                                     </select>
                                 </div>
                             </div>
@@ -133,7 +147,7 @@
                                 <label class="col-sm-3 control-label">Zwischenstops</label>
                                 <div class="col-sm-9">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="">
+                                        <input type="text" class="form-control" placeholder="Zwischenstops" id="zwischenstops">
                                         <div class="input-group-btn">
                                             <button type="button" class="btn btn-success">
                                           +
@@ -166,7 +180,7 @@
                                             <h3 class="panel-title"><a href="#" style="cursor: help;"><i>i</i></a></h3>
                                         </div>
                                         <div class="panel-body">
-                                            <label class="control-label">Weitere Mitfahrer autmatisch zuordnen <input type="checkbox" name="" value="" class=""></label>
+                                            <label class="control-label">Weitere Mitfahrer autmatisch zuordnen <input type="checkbox" name="" value="" class="" id="passenger"></label>
                                             <button type="button" class="btn btn-info pull-right btn-circle" style="cursor: help;"><i>i</i></button>
                                         </div>
                                     </div>
