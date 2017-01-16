@@ -14,6 +14,8 @@
         <link rel="stylesheet" type="text/css" href="css/order.css">
 
         <script type="text/javascript" src="js/index.js"></script>
+        <script src="js/woz.js"></script>
+        <script src="js/gui.js"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx0jxbskZB744V0-NKGVaW0VeTnwfIyY&signed_in=true&libraries=places&callback=initService" async defer></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -119,7 +121,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
+                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('auswahl')" type="button">Next</button>
                                     <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
                                 </div>
                             </div>
@@ -183,14 +185,20 @@
                                         </div>
                                         <div class="panel-body">
                                             <label class="control-label">Weitere Mitfahrer autmatisch zuordnen <input type="checkbox" name="" value="" class="" id="passenger"></label>
-                                            <button type="button" class="btn btn-info pull-right btn-circle" style="cursor: help;"><i>i</i></button>
+                                            <button type="button" class="btn btn-info pull-right btn-circle" style="cursor: help;" id="opener"><i>i</i></button>
+                                            <div id="wrapper">
+                                                <p>
+                                                    <h4>Was passiert, wenn der Haken gesetzt ist?</h4> Unsere Software wird Ihnen weitere Mitfahrer zuordnen, um die Kapazität des Autos optimal zu nutzen.</p>
+                                                <p>
+                                                    <h4>Welchen Vorteil hat es, weitere Mitfahrer mitzunehmen?</h4> Zum einen bleibt der Fahrpreis konstatnt und wird zusätzlich auf alle Mitfahrer aufgeteilt. Zum anderen helfen sie, einen effizienten und umweltfreundlichen Gebrauch unserer Fahrzeuge zu ermöglichen</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
+                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('option');update();" type="button">Next</button>
                                     <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
                                 </div>
                             </div>
@@ -207,18 +215,18 @@
                             <div class="form-group">
                                 <label class="col-sm-1"></label>
                                 <label class="col-sm-2 control-label">Standort:</label>
-                                <label class="col-sm-2 control-label">Hannover</label>
+                                <label class="col-sm-2 control-label" id="standort_p"></label>
                                 <label class="col-sm-2"></label>
                                 <label class="col-sm-2 control-label">Preis:</label>
-                                <label class="col-sm-2 control-label">5.30€</label>
+                                <label class="col-sm-1 control-label" id="preis_p"></label>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-1"></label>
                                 <label class="col-sm-2 control-label">Ziel:</label>
-                                <label class="col-sm-2 control-label">Bremen</label>
+                                <label class="col-sm-2 control-label" id="ziel_p"></label>
                                 <label class="col-sm-2"></label>
                                 <label class="col-sm-2 control-label">Mitfahrer:</label>
-                                <label class="col-sm-2 control-label">3</label>
+                                <label class="col-sm-1 control-label" id="zwischenstops_p"></label>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-3">
@@ -262,12 +270,12 @@
                             <div class="form-group">
                                 <label class="col-sm-2"></label>
                                 <label class="col-sm-2">Preis:</label>
-                                <label class="col-sm-2 ">5.30€</label>
+                                <label class="<col-sm-2></col-sm-2>" id="preis">5.30€</label>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <form action="infoPage.html">
-                                        <button class="btn btn-primary finalBtn pull-right">
+                                        <button class="btn btn-primary pull-right">
 								  		Kostenpflichtig bestellen
 										</button>
                                     </form>
