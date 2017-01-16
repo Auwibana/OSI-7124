@@ -127,6 +127,9 @@ $(document).ready(function() {
 
     allWells.hide();
 
+    var d = new Date();
+    document.getElementById('date').value = d.getDate() + "." + d.getMonth()+1 + "." + d. getFullYear();
+
     navListItems.click(function(e) {
         e.preventDefault();
         var $target = $($(this).attr('href')),
