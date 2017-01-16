@@ -160,12 +160,12 @@ $(document).ready(function() {
             nextStepWizard.removeAttr('disabled').trigger('click');
     });
 
-    var date = $('#date').datepicker({
-        dateFormat: 'dd.mm.yy'
-    }).val();
-
     $('div.setup-panel div a.btn-primary').trigger('click');
 });
+
+var date = $('#date').datepicker({
+	dateFormat: 'dd.mm.yy'
+}).val();
 
 $('#wrapper').dialog({
 	height: 400,
@@ -179,4 +179,10 @@ $('#wrapper').dialog({
 $('#opener').click(function() {
     $('#wrapper').dialog('open');
     return false;
+});
+
+
+$('#time').wickedpicker({
+	twentyFour: true,
+	minutesInterval: 1
 });
