@@ -1,41 +1,53 @@
+var requestGet = new XMLHttpRequest();
+var start
+var end
+var zwischen
 
-window.onload = function () {
-	//src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx0jxbskZB744V0-NKGVaW0VeTnwfIyY";
+requestGet.onreadystatechange = function() {
+	// console.log("onreadystatechange: " + requestGet.readyState + ", " +  requestGet.status);
+	// console.log(requestGet.responseText);
+	if (requestGet.readyState == 4) {
+		if (requestGet.status == 200) {
+			var response = JSON.parse(requestGet.responseText);
+			handlersGet[response._id](response);
+		}
+		if (requestGet.status == 404) {
+			console.log("not found: " + requestGet.responseText);
+		}
+	}
+};
+
+function get(variable) {
+	// console.log("get " + variable);
+	requestGet.open("GET", dburl + variable, false);
+	requestGet.send();
 }
 
-// Dieses Programm findet die Position des Nutzers heraus und centriert die Karte auf den Nutzer
-// Einfacheres Programm das nur die Position des Nutzers ermittelt gibt es in index.js
-function getGeolocation(map){
-	var infoWindow = new google.maps.InfoWindow({map: map});
-
-	// Try HTML5 geolocation.
-	if (navigator.geolocation) {
-	  navigator.geolocation.getCurrentPosition(function(position) {
-	    var pos = {
-	      lat: position.coords.latitude,
-	      lng: position.coords.longitude
-	    };
-
-	    infoWindow.setPosition(pos);
-	    infoWindow.setContent('Location found.');
-	    map.setCenter(pos);
-			// Das hier ist die momentane Nutzer Position die in der DB gespeichert werden muss
-
-			alert(position.coords.latitude);
-	  }, function() {
-	    handleLocationError(true, infoWindow, map.getCenter());
-	  });
-	} else {
-	  // Browser doesn't support Geolocation
-	  handleLocationError(false, infoWindow, map.getCenter());
+function update() {
+	for (var name in handlersGet) {
+		// console.log("updating " + name);
+		get(name);
 	}
 }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-	infoWindow.setPosition(pos);
-	infoWindow.setContent(browserHasGeolocation ?
-                      'Error: The Geolocation service failed.' :
-                      'Error: Your browser doesn\'t support geolocation.');
+
+///////////////////////////////////////////////////////////////////////////////
+// your code below
+
+var dbname = "hci1";
+var dburl = "http://127.0.0.1:5984/" + dbname + "/";
+var handlersGet = {
+	"option" : optionGet,
+	"auswahl": auswahlGet
+};
+
+function auswahlGet(response) {
+	start = response.start
+	end = response.end
+}
+
+function optionGet(response) {
+	zwischen = response.zwischenstops
 }
 
 
@@ -53,7 +65,6 @@ function myMap() {
 
 	map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-	getGeolocation(map)
 
 	directionsDisplay.setMap(map);
 
@@ -68,17 +79,17 @@ function calcRoute(directionsDisplay) {
 	var directionsService = new google.maps.DirectionsService();
 
 	// Es können beliebig viele waypoints hier erstellt werden, um sie als zwischenstops zu nutzen
+	get("option")
 	var  waypoints = [];
 
 	var waypoints_obj = {
-		location: "Hannover Hauptbahnhof",
+		location: zwischen,
 		stopover: true
 	};
 
 	waypoints.push(waypoints_obj);
 	// start und end müssen noch von der Datenbank geholt werden
-  var start = "Hannover";
-  var end = "Bremen";
+	get("auswahl")
   var request = {
     origin:start,
     destination:end,
