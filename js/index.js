@@ -22,10 +22,28 @@ function initService() {
   //service.getQueryPredictions({ input: 'pizza near Syd' }, displaySuggestions);
 
   // hier muss das input field vom type text stehen
-  var input = document.getElementById('searchTextField');
+  var start = document.getElementById('start');
+  var ziel = document.getElementById('ziel');
+  var zwischenstops = document.getElementById('zwischenstops');
 
   // das ist das SearchBox Objekt das die Suggestions handled
-  var searchBox = new google.maps.places.SearchBox(input, {
+  var searchStart = new google.maps.places.SearchBox(start, {
+    //bounds: defaultBounds
+
+    // das hier beschränkt die suche auf Deutschland
+    // habe aber nicht das gefühl das die restriction wirklich functioniert
+    componentRestrictions: {country: 'de'}
+  });
+
+  var searchZiel = new google.maps.places.SearchBox(ziel, {
+    //bounds: defaultBounds
+
+    // das hier beschränkt die suche auf Deutschland
+    // habe aber nicht das gefühl das die restriction wirklich functioniert
+    componentRestrictions: {country: 'de'}
+  });
+
+  var searchZwischenstops = new google.maps.places.SearchBox(zwischenstops, {
     //bounds: defaultBounds
 
     // das hier beschränkt die suche auf Deutschland
@@ -37,18 +55,34 @@ function initService() {
   // Hier sollte man noch die Dynamamische Position des Users einbauen
   // kann wahrscheinlich aus kommentiert werden
   // oben die suche auf deutschland beschränkt
-  var defaultBounds = new google.maps.LatLngBounds(
-    new google.maps.LatLng(-33.8902, 151.1759),
-    new google.maps.LatLng(-33.8474, 151.2631));
-
-  searchBox.addListener('places_changed', function() {
-    var places = searchBox.getPlaces();
+  searchStart.addListener('places_changed', function() {
+    var places = searchStart.getPlaces();
 
     if (places.length == 0) {
       return;
     }
     // Sobald sich der Nutzer für eine Adresse entschieden hat das ergbeniss von hier ausgelesen werden.
-    alert(searchBox.getPlaces()[0].formatted_address);
+    //alert(searchStart.getPlaces()[0].formatted_address);
+  });
+
+  searchZiel.addListener('places_changed', function() {
+    var places = searchZiel.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+    // Sobald sich der Nutzer für eine Adresse entschieden hat das ergbeniss von hier ausgelesen werden.
+    //alert(searchZiel.getPlaces()[0].formatted_address);
+  });
+
+  searchZwischenstops.addListener('places_changed', function() {
+    var places = searchZwischenstops.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+    // Sobald sich der Nutzer für eine Adresse entschieden hat das ergbeniss von hier ausgelesen werden.
+    //alert(searchZiel.getPlaces()[0].formatted_address);
   });
 }
 
@@ -60,15 +94,29 @@ function geolocate() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      var circle = new google.maps.Circle({
-        center: geolocation,
-        radius: position.coords.accuracy
-      });
-      autocomplete.setBounds(circle.getBounds());
+      geolocate2(geolocation.lat, geolocation.lng);
 
       // Diese Geodaten könnten dann als user position in die Datenbank reingemacht werden
       // position.coords.latitude
       // position.coords.longitude
     });
   }
+}
+
+
+function geolocate2(lat, lng){
+  var geocoder = new google.maps.Geocoder;
+  var latlng = {lat: lat, lng: lng};
+  geocoder.geocode({'location': latlng}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      if(results[0]){
+        document.getElementById('start').value = results[0].formatted_address;
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
+  } else {
+       window.alert('Geocoder failed due to: ' + status);
+     }
+
+  });
 }
