@@ -123,7 +123,7 @@ function set_destination() {
 var request = new XMLHttpRequest();
 
 request.onreadystatechange = function() {
-	// console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
+	console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
 	// console.log(request.responseText);
 	if (request.readyState == 4) {
 		if (request.status == 200) {
@@ -202,6 +202,7 @@ function auswahl(response) {
 }
 
 function option(response) {
+        alert("Option")
 		var persons = document.getElementById("persons").value
 		var passenger = document.getElementById("passenger").checked
 		var zwischenstops = []
@@ -212,6 +213,7 @@ function option(response) {
 }
 
 $(document).ready(function() {
+        createDB()
 		set('login')
     var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
