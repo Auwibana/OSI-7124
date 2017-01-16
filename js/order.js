@@ -166,3 +166,17 @@ $(document).ready(function() {
 
     $('div.setup-panel div a.btn-primary').trigger('click');
 });
+
+$('#wrapper').dialog({
+	height: 400,
+    width: 350,
+    modal: true,
+    resizable: true,
+    autoOpen: false,
+    title: 'Info Dialog'
+}).prev(".ui-dialog-titlebar").css("background","rgb(191, 227, 255)");
+
+$('#opener').click(function() {
+    $('#wrapper').dialog('open');
+    return false;
+});
