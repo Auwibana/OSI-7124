@@ -66,9 +66,14 @@ function update() {
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlersGet = {
+	"login" : loginGet,
 	"option" : optionGet,
 	"auswahl": auswahlGet
 };
+
+function loginGet(response) {
+	document.getElementById("ziel").value = response.home
+}
 
 function auswahlGet(response) {
 	document.getElementById('standort_p').innerHTML = response.start

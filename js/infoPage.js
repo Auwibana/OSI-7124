@@ -82,13 +82,15 @@ function calcRoute(directionsDisplay) {
 	get("option")
 	var  waypoints = [];
 
+zwischen.forEach((n) => {
 	var waypoints_obj = {
-		location: zwischen,
+		location: n,
 		stopover: true
 	};
-
 	waypoints.push(waypoints_obj);
-	// start und end müssen noch von der Datenbank geholt werden
+})
+
+
 	get("auswahl")
   var request = {
     origin:start,
