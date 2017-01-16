@@ -16,7 +16,6 @@
 		<link rel="stylesheet" href="timepicker/dist/wickedpicker.min.css" type="text/css">
 
         <script type="text/javascript" src="js/index.js"></script>
-        <script src="js/woz.js"></script>
         <script src="js/gui.js"></script>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx0jxbskZB744V0-NKGVaW0VeTnwfIyY&signed_in=true&libraries=places&callback=initService" async defer></script>
 
@@ -104,7 +103,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="ziel" placeholder="Ziel">
                                         <div class="input-group-btn">
-                                            <button type="button" class="btn btn-default">
+                                            <button type="button" class="btn btn-default" onclick="get('login')">
                                               <span class="glyphicon glyphicon-home"></span>
                                             </button>
                                         </div>
@@ -167,7 +166,7 @@
                             <div class="form-group">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9">
-                                    <ul class="list-group">
+                                    <!--<ul class="list-group">
                                         <li class="list-group-item" data-toggle="collapse" data-target="#breakpoint" style="cursor: pointer;">
                                             <h4 class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint">2</span></h4>
                                             <p class="list-group-item-text">Leibniz Universität</p>
@@ -178,7 +177,7 @@
                                                 <p class="list-group-item-text">Hauptbahnhof</p>
                                             </li>
                                         </div>
-                                    </ul>
+                                    </ul>-->
                                 </div>
                             </div>
                             <div class="form-group">
