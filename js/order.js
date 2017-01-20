@@ -259,9 +259,16 @@ $(document).ready(function() {
     $('div.setup-panel div a.btn-primary').trigger('click');
 });
 
-var date = $('#date').datepicker({
-	dateFormat: 'dd.mm.yy'
-}).val();
+$('#date').datepicker({
+        monthNames: ['Januar','Februar','März','April','Mai','Juni',
+        'Juli','August','September','Oktober','November','Dezember'],
+        dayNames: ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
+        dayNamesShort: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+        dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+      dateFormat:'dd.mm.yy'
+    }
+  );
+
 
 $('#wrapper').dialog({
 	height: 400,
@@ -283,8 +290,8 @@ $('#car_ordered_dialog').dialog({
                     $( this ).dialog( "close" );
 					window.location.href = "infoPage.html";                }
             },
-	height: 300,
-    width: 300,
+	height: 250,
+    width: 400,
     modal: true,
     resizable: true,
     autoOpen: false,
