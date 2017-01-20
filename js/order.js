@@ -190,7 +190,10 @@ var handlers = {
 };
 
 function login(response) {
-	put(response, {"home" : "Stöckener Markt, Eichsfelder Straße, Hannover, Deutschland"})
+	alert("Test")
+		var username = document.getElementById("username").value
+		var pass = document.getElementById("pass").value
+	put(response, {"home" : "Stöckener Markt, Eichsfelder Straße, Hannover, Deutschland", "user":username, "pass":pass})
 }
 
 function auswahl(response) {
@@ -212,9 +215,7 @@ function option(response) {
 }
 
 $(document).ready(function() {
-        createDB()
-		set('login')
-    var navListItems = $('div.setup-panel div a'),
+    	var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
         allNextBtn = $('.nextBtn');
 
