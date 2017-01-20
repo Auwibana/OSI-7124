@@ -61,19 +61,19 @@
             <div class="stepwizard col-md-offset-3">
                 <div class="stepwizard-row setup-panel">
                     <div class="stepwizard-step">
-                        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+                        <a href="#step-1" type="button" class="btn btn-primary btn-circle-step">1</a>
                         <p>Auswahl</p>
                     </div>
                     <div class="stepwizard-step">
-                        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                        <a href="#step-2" type="button" class="btn btn-default btn-circle-step" disabled="disabled">2</a>
                         <p>Optionen</p>
                     </div>
                     <div class="stepwizard-step">
-                        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                        <a href="#step-3" type="button" class="btn btn-default btn-circle-step" disabled="disabled">3</a>
                         <p>Prüfen</p>
                     </div>
                     <div class="stepwizard-step">
-                        <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                        <a href="#step-4" type="button" class="btn btn-default btn-circle-step" disabled="disabled">4</a>
                         <p>Bestätigen</p>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control" id="date" placeholder="Datum">
                                 </div>
-                                <label for="time" class="col-sm-2 control-label">Zeit</label>
+                                <label for="time" class="col-sm-2 control-label">Abfahrtzeit</label>
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control timepicker" id="time" placeholder="Zeit">
                                 </div>
@@ -156,7 +156,7 @@
                                         <input type="text" style="display:none">
                                         <!-- just because magic happens here-->
                                         <div class="input-group-btn">
-                                            <button type="button" class="btn btn-default">
+                                            <button type="button" class="btn btn-default" id="input-group-button">
                                                 +
                                             </button>
                                         </div>
@@ -165,19 +165,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-3"></div>
-                                <div class="col-sm-9">
-                                    <!--<ul class="list-group">
-                                        <li class="list-group-item" data-toggle="collapse" data-target="#breakpoint" style="cursor: pointer;">
-                                            <h4 class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint">2</span></h4>
-                                            <p class="list-group-item-text">Leibniz Universität</p>
-                                        </li>
-                                        <div id="breakpoint" class="collapse">
-                                            <li class="list-group-item">
-                                                <h4 class="list-group-item-heading">Hannover</h4>
-                                                <p class="list-group-item-text">Hauptbahnhof</p>
-                                            </li>
-                                        </div>
-                                    </ul>-->
+                                <div class="col-sm-9" id="list-group-id">
+                                    <ul class="list-group"></ul>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -233,18 +222,8 @@
                                 <div class="col-sm-3">
                                     <label class="col-sm-3 control-label">Zwischenstops:</label>
                                 </div>
-                                <div class="col-sm-8">
-                                    <ul class="list-group">
-                                        <li class="list-group-item" data-toggle="collapse" data-target="#demo">
-                                            <h4 class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint">2</span></h4>
-                                            <p class="list-group-item-text">Leibniz Universität</p>
-                                        </li>
-                                        <div id="demo" class="collapse">
-                                            <li class="list-group-item">
-                                                <h4 class="list-group-item-heading">Hannover</h4>
-                                                <p class="list-group-item-text">Hauptbahnhof</p>
-                                            </li>
-                                        </div>
+                                <div class="col-sm-8" id="list-group-id-check">
+                                    <ul class="list-group-check">
                                     </ul>
                                 </div>
                             </div>
@@ -299,7 +278,7 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
             <script type="text/javascript" src="timepicker/src/wickedpicker.js"></script>
-			
+
             <script type="text/javascript" src="js/order.js"></script>
 
     </body>
