@@ -10,14 +10,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
         <link rel="stylesheet" type="text/css" href="css/order.css">
-
-        <link rel="stylesheet" href="timepicker/dist/wickedpicker.min.css" type="text/css">
-
-        <script type="text/javascript" src="js/index.js"></script>
-        <script src="js/gui.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx0jxbskZB744V0-NKGVaW0VeTnwfIyY&signed_in=true&libraries=places&callback=initService" async defer></script>
+		<link rel="stylesheet" type="text/css" href="datetimepicker/jquery.datetimepicker.css"/ >
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,19 +55,19 @@
             <div class="stepwizard col-md-offset-3">
                 <div class="stepwizard-row setup-panel">
                     <div class="stepwizard-step">
-                        <a href="#step-1" type="button" class="btn btn-primary btn-circle-step">1</a>
+                        <a href="#step-1" type="button" class="btn btn-primary btn-circle-step" id="step-button-1">1</a>
                         <p>Auswahl</p>
                     </div>
                     <div class="stepwizard-step">
-                        <a href="#step-2" type="button" class="btn btn-default btn-circle-step" disabled="disabled">2</a>
+                        <a href="#step-2" type="button" class="btn btn-default btn-circle-step" id="step-button-2">2</a>
                         <p>Optionen</p>
                     </div>
                     <div class="stepwizard-step">
-                        <a href="#step-3" type="button" class="btn btn-default btn-circle-step" disabled="disabled">3</a>
+                        <a href="#step-3" type="button" class="btn btn-default btn-circle-step" id="step-button-3">3</a>
                         <p>Prüfen</p>
                     </div>
                     <div class="stepwizard-step">
-                        <a href="#step-4" type="button" class="btn btn-default btn-circle-step" disabled="disabled">4</a>
+                        <a href="#step-4" type="button" class="btn btn-default btn-circle-step" id="step-button-4">4</a>
                         <p>Bestätigen</p>
                     </div>
                 </div>
@@ -117,12 +111,12 @@
                                 </div>
                                 <label for="time" class="col-sm-2 control-label">Abfahrtzeit</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control timepicker" id="time" placeholder="Zeit">
+									<input type="text" class="form-control" id="timepicker">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('auswahl')" type="button">Next</button>
+                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('auswahl')" type="button" id="next-button-step-1">Next</button>
                                     <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
                                 </div>
                             </div>
@@ -190,7 +184,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('option');update();" type="button">Next</button>
+                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('option');update();" type="button" id="next-button-step-2">Next</button>
                                     <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
                                 </div>
                             </div>
@@ -206,7 +200,7 @@
                         <form class="form-horizontal">
                             <div class="form-group">
                                 <label class="col-sm-1"></label>
-                                <label class="col-sm-2 control-label">Standort:</label>
+                                <label class="col-sm-2 control-label">Start:</label>
                                 <label class="col-sm-4 control-label" id="standort_p"></label>
                                 <label class="col-sm-2 control-label">Preis:</label>
                                 <label class="col-sm-1 control-label" id="preis_p"></label>
@@ -229,7 +223,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
+                                    <button class="btn btn-primary nextBtn pull-right" type="button" id="next-button-step-3">Next</button>
                                     <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
                                 </div>
                             </div>
@@ -277,9 +271,11 @@
             <!-- Include all compiled plugins (below), or include individual files as needed -->
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-            <script type="text/javascript" src="timepicker/src/wickedpicker.js"></script>
-
+			<script type="text/javascript" src="datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
             <script type="text/javascript" src="js/order.js"></script>
+			<script type="text/javascript" src="js/index.js"></script>
+	        <script src="js/gui.js"></script>
+	        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx0jxbskZB744V0-NKGVaW0VeTnwfIyY&signed_in=true&libraries=places&callback=initService" async defer></script>
 
     </body>
 </html>
