@@ -123,59 +123,61 @@ function set_destination() {
 var request = new XMLHttpRequest();
 
 request.onreadystatechange = function() {
-	console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
-	// console.log(request.responseText);
-	if (request.readyState == 4) {
-		if (request.status == 200) {
-			var response = JSON.parse(request.responseText);
-			handlers[response._id](response);
-		}
-		if (request.status == 404) {
-			var json = JSON.parse(request.responseText);
-			if (json.reason === "no_db_file") {
-				createDB();
-			} else {
-				var url = request.responseURL
-				// console.log(typeof(url));
-				var i = url.lastIndexOf("/", url.length - 1);
-				var name = url.substring(i + 1);
-				handlers[name]({ "_id" : name });
-			}
-		}
-	}
+    console.log("onreadystatechange: " + request.readyState + ", " + request.status);
+    // console.log(request.responseText);
+    if (request.readyState == 4) {
+        if (request.status == 200) {
+            var response = JSON.parse(request.responseText);
+            handlers[response._id](response);
+        }
+        if (request.status == 404) {
+            var json = JSON.parse(request.responseText);
+            if (json.reason === "no_db_file") {
+                createDB();
+            } else {
+                var url = request.responseURL
+                // console.log(typeof(url));
+                var i = url.lastIndexOf("/", url.length - 1);
+                var name = url.substring(i + 1);
+                handlers[name]({
+                    "_id": name
+                });
+            }
+        }
+    }
 };
 
 function getCheckedRadio(name) {
-	var options = document.getElementsByName(name);
-	for (i = 0; i < options.length; i++) {
-		var option = options[i];
-		if (option.checked) {
-			return option.value;
-		}
-	}
-	return null;
+    var options = document.getElementsByName(name);
+    for (i = 0; i < options.length; i++) {
+        var option = options[i];
+        if (option.checked) {
+            return option.value;
+        }
+    }
+    return null;
 }
 
 function set(name) {
-	request.open("GET", dburl + name, false);
-	request.send();
+    request.open("GET", dburl + name, false);
+    request.send();
 }
 
 function put(response, message) {
-	request.open("PUT", dburl + response._id, false);
-	request.setRequestHeader("Content-type", "application/json");
-	message["_id"] = response._id;
-	if (response._rev) {
-		message["_rev"] = response._rev;
-	}
-	var s = JSON.stringify(message);
-	// console.log("put: " + s);
-	request.send(s);
+    request.open("PUT", dburl + response._id, false);
+    request.setRequestHeader("Content-type", "application/json");
+    message["_id"] = response._id;
+    if (response._rev) {
+        message["_rev"] = response._rev;
+    }
+    var s = JSON.stringify(message);
+    // console.log("put: " + s);
+    request.send(s);
 }
 
 function createDB() {
-	request.open("PUT", dburl, false);
-	request.send();
+    request.open("PUT", dburl, false);
+    request.send();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -184,45 +186,55 @@ function createDB() {
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
-	"login": login,
-	"auswahl" : auswahl,
-	"option" : option
+    "login": login,
+    "auswahl": auswahl,
+    "option": option
 };
 
 function login(response) {
-	alert("Test")
-		var username = document.getElementById("username").value
-		var pass = document.getElementById("pass").value
-	put(response, {"home" : "Stöckener Markt, Eichsfelder Straße, Hannover, Deutschland", "user":username, "pass":pass})
+    put(response, {
+        "home": "Stöckener Markt, Eichsfelder Straße, Hannover, Deutschland"
+    })
 }
 
 function auswahl(response) {
-		var start = document.getElementById("start").value
-		var end = document.getElementById("ziel").value
-		var date = document.getElementById("date").value
-		var time = document.getElementById("time").value
-		put(response, {"start" : start, "end": end, "date":date, "time": time});
+    var start = document.getElementById("start").value
+    var end = document.getElementById("ziel").value
+    var date = document.getElementById("date").value
+    var time = document.getElementById("time").value
+    put(response, {
+        "start": start,
+        "end": end,
+        "date": date,
+        "time": time
+    });
 }
 
 function option(response) {
-		var persons = document.getElementById("persons").value
-		var passenger = document.getElementById("passenger").checked
-		var zwischenstops = []
-		if(document.getElementById("zwischenstops").value != ""){
-			zwischenstops.push(document.getElementById("zwischenstops").value)
-		}
-		put(response, {"persons" : persons, "passenger": passenger, "zwischenstops": zwischenstops});
+    var persons = document.getElementById("persons").value
+    var passenger = document.getElementById("passenger").checked
+    var zwischenstops = []
+    if (document.getElementById("zwischenstops").value != "") {
+        zwischenstops.push(document.getElementById("zwischenstops").value)
+    }
+    put(response, {
+        "persons": persons,
+        "passenger": passenger,
+        "zwischenstops": zwischenstops
+    });
 }
 
 $(document).ready(function() {
-    	var navListItems = $('div.setup-panel div a'),
+    createDB()
+    set('login')
+    var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
         allNextBtn = $('.nextBtn');
 
     allWells.hide();
 
     var d = new Date();
-    document.getElementById('date').value = d.getDate() + "." + d.getMonth()+1 + "." + d. getFullYear();
+    document.getElementById('date').value = d.getDate() + "." + d.getMonth() + 1 + "." + d.getFullYear();
 
     navListItems.click(function(e) {
         e.preventDefault();
@@ -260,18 +272,52 @@ $(document).ready(function() {
     $('div.setup-panel div a.btn-primary').trigger('click');
 });
 
-var date = $('#date').datepicker({
-	dateFormat: 'dd.mm.yy'
-}).val();
+$('#date').datepicker({
+    monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+        'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+    ],
+    dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+    dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    dateFormat: 'dd.mm.yy'
+});
+
+$('#input-group-button').click(function() {
+    var length = $('#list-group-id ul li').length;
+
+    if (length == 0) {
+        $("#list-group-id ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
+
+        $("#list-group-id-check ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint-check"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint-check"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
+    } else if (length == 1) {
+        $("#list-group-id ul").append('<div id="breakpoint" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
+
+        $("#list-group-id-check ul").append('<div id="breakpoint-check" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
+    } else if (length < 4) {
+        $("#breakpoint").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+
+        $("#breakpoint-check").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+    } else {
+        alert("You can't insert more than 4 interstops, sorry!")
+    }
+
+    var updated_length = $('#list-group-id ul li').length;
+
+    if (updated_length > 1) {
+        $('#badge_breakpoint').html($('#list-group-id ul li').length);
+        $('#badge_breakpoint-check').html($('#list-group-id-check ul li').length);
+    }
+});
+
 
 $('#wrapper').dialog({
-	height: 400,
+    height: 400,
     width: 350,
     modal: true,
     resizable: true,
     autoOpen: false,
     title: 'Info Dialog'
-}).prev(".ui-dialog-titlebar").css("background","rgb(191, 227, 255)");
+}).prev(".ui-dialog-titlebar").css("background", "rgb(191, 227, 255)");
 
 $('#opener').click(function() {
     $('#wrapper').dialog('open');
@@ -279,18 +325,19 @@ $('#opener').click(function() {
 });
 
 $('#car_ordered_dialog').dialog({
-	buttons: {
-                OK: function() { //submit
-                    $( this ).dialog( "close" );
-					window.location.href = "infoPage.html";                }
-            },
-	height: 300,
-    width: 300,
+    buttons: {
+        OK: function() { //submit
+            $(this).dialog("close");
+            window.location.href = "infoPage.html";
+        }
+    },
+    height: 250,
+    width: 400,
     modal: true,
     resizable: true,
     autoOpen: false,
     title: 'Car Ordered Dialog'
-}).prev(".ui-dialog-titlebar").css("background","rgb(191, 227, 255)");
+}).prev(".ui-dialog-titlebar").css("background", "rgb(191, 227, 255)");
 
 $('#car_ordered_opener').click(function() {
     $('#car_ordered_dialog').dialog('open');
@@ -298,6 +345,6 @@ $('#car_ordered_opener').click(function() {
 });
 
 $('#time').wickedpicker({
-	twentyFour: true,
-	minutesInterval: 1
+    twentyFour: true,
+    minutesInterval: 1
 });
