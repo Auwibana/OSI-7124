@@ -31,6 +31,8 @@ origins = *
 */
 
 var requestGet = new XMLHttpRequest();
+var register
+var user
 
 requestGet.onreadystatechange = function() {
 	// console.log("onreadystatechange: " + requestGet.readyState + ", " +  requestGet.status);
@@ -68,25 +70,17 @@ var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlersGet = {
 	"register" : registerGet,
 	"option" : optionGet,
-	"auswahl": auswahlGet
+	"auswahl": auswahlGet,
+	"login":loginGet
 };
 
 function registerGet(response) {
-	var user = document.getElementById('username').value
-	var pass = document.getElementById('pass').value
-	if(response[user]){
-		var uobj = response[user]
-		if(uobj.pass == pass){
-			document.getElementById("reg").innerHTML = " "+user
-			$('#login').hide()
-			$('#logout').show()
-			$('#login-popup').popover('hide')
-		}else{
-			$('.passDiv').append('<div class="alert alert-warning alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong><br>Falsches Passwort</div>')
-		}
-	}else{
-		$('.userDiv').append('<div class="alert alert-warning alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong><br>Nutzer nicht gefunden</div>')
-	}
+	register = response
+}
+
+function loginGet(response){
+	user = response.login
+	console.log(response)
 }
 
 function auswahlGet(response) {
@@ -104,19 +98,42 @@ function optionGet(response) {
 
 	document.getElementById('passenger_p').innerHTML = response.persons
 	document.getElementById('preis_p').innerHTML = "Preis: "+20+response.persons*5 +"€"
-	document.getElementById('preis').innerHTML = "Preis: "+20+response.persons*5 +"€"
 	document.getElementById('waypoints-check-table').innerHTML = "<ul id='waypoints-check'></ul>"
-	for(var i = 0; i<response.zwischenstops.length;i++){
+	for(var i = 0; i<response.zwischenstopsHtml.length;i++){
 		var li = document.createElement('li')
-		li.innerHTML = response.zwischenstops[i]
+		li.innerHTML = response.zwischenstopsHtml[i]
 		li.className += 'list-group-item'
 		if(i==0){
 			li.children[0].removeChild(li.children[0].children[0])
 		}
 		document.getElementById('waypoints-check').appendChild(li)
 	}
-	//if(response.zwischenstops != ""){
-	//	document.getElementById('zwischenList').innerHTML = "<li>"+response.zwischenstops+"</li>"
-	//}
-	document.getElementById("wartezeit").innerHTML = "Wartezeit: " + Math.floor(Math.random()*5) +":" +Math.floor(Math.random()*60)
+}
+
+function login(){
+	get('register')
+	var user = document.getElementById('username').value
+	var pass = document.getElementById('pass').value
+	if(register[user]){
+		var uobj = register[user]
+		if(uobj.pass == pass){
+			document.getElementById("reg").innerHTML = " "+user
+			$('#login').hide()
+			$('#logout').show()
+			$('#login-popup').popover('hide')
+			document.getElementById('bestellen').disabled = false
+			loginSet(user)
+		}else{
+			$('.passDiv').append('<div class="alert alert-warning alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong><br>Falsches Passwort</div>')
+		}
+	}else{
+		$('.userDiv').append('<div class="alert alert-warning alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong><br>Nutzer nicht gefunden</div>')
+	}
+}
+
+function home(){
+	get('login')
+	get('register')
+	console.log(user)
+	document.getElementById('ziel').value = register[user].home
 }

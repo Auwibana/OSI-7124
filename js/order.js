@@ -1,4 +1,5 @@
 var request = new XMLHttpRequest();
+var waypoints = []
 
 request.onreadystatechange = function() {
     //console.log("onreadystatechange: " + request.readyState + ", " + request.status);
@@ -64,16 +65,9 @@ function createDB() {
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
-    "login": login,
     "auswahl": auswahl,
     "option": option
 };
-
-function login(response) {
-    put(response, {
-        "home": "Stöckener Markt, Eichsfelder Straße, Hannover, Deutschland"
-    })
-}
 
 function auswahl(response) {
     var start = document.getElementById("start").value
@@ -92,25 +86,25 @@ function auswahl(response) {
 function option(response) {
     var persons = document.getElementById("persons").value
     var passenger = document.getElementById("passenger").checked
-    var zwischenstops = []
+    var zwischenstopsHtml = []
     var ul = document.getElementById('waypoints').getElementsByTagName('li')
     for (var i = 0; i < ul.length; i++) {
-        zwischenstops.push(ul[i].innerHTML)
+        zwischenstopsHtml.push(ul[i].innerHTML)
     }
-    console.log(zwischenstops)
-    //if (document.getElementById("zwischenstops").value != "") {
-    //    zwischenstops.push(document.getElementById("zwischenstops").value)
-    //}
     put(response, {
         "persons": persons,
         "passenger": passenger,
-        "zwischenstops": zwischenstops
+        "zwischenstopsHtml": zwischenstopsHtml,
+        "zwischenstops":waypoints
     });
+}
+
+function addWaypoint(){
+  waypoints.push(document.getElementById('zwischenstops').value)
 }
 
 $(document).ready(function() {
     createDB()
-    set('login')
     var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
         allNextBtn = $('.nextBtn');
@@ -187,6 +181,12 @@ $('#input-group-button').click(function() {
     var length = $('#list-group-id ul li').length;
     var isFormValid = true;
 
+    var input = document.getElementById('zwischenstops').value;
+    input = input.split(", ");
+
+    var city = input[input.length - 2];
+    var location = input[0];
+
 
     $("#zwischenstops").each(function() {
         if ($.trim($(this).val()).length == 0) {
@@ -201,18 +201,11 @@ $('#input-group-button').click(function() {
 
     else {
         if (length == 0) {
-            $("#list-group-id ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
-
+            $("#list-group-id ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint"style="cursor: pointer;"><h4  class="list-group-item-heading">' + city + '<span class="badge pull-right" id="badge_breakpoint"></span></h4><p class="list-group-item-text">' + location + '</p></li>');
         } else if (length == 1) {
-            $("#list-group-id ul").append('<div id="breakpoint" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
-
-            $("#list-group-id-check ul").append('<div id="breakpoint-check" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
-
+            $("#list-group-id ul").append('<div id="breakpoint" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">' + city + '</h4><p class="list-group-item-text">' + location + '</p></li></div>');
         } else if (length < 4) {
-            $("#breakpoint").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
-
-            $("#breakpoint-check").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
-
+            $("#breakpoint").append('<li class="list-group-item"><h4 class="list-group-item-heading">' + city + '</h4><p class="list-group-item-text">' + location + '</p></li>');
         } else {
             $('#alert-full-list').show();
         }
@@ -221,7 +214,6 @@ $('#input-group-button').click(function() {
 
         if (updated_length > 1) {
             $('#badge_breakpoint').html($('#list-group-id ul li').length);
-            $('#badge_breakpoint-check').html($('#list-group-id-check ul li').length);
         }
     }
 });
@@ -239,6 +231,14 @@ function checkTime(i) {
     return (i < 10) ? "0" + i : i;
 }
 document.getElementById('time').value = checkTime(d.getHours()) + ":" + checkTime(d.getMinutes());
+
+$('#current_time').click(function() {
+	document.getElementById('time').value = checkTime(d.getHours()) + ":" + checkTime(d.getMinutes());
+});
+
+$('#current_date').click(function() {
+	document.getElementById('date').value = d.getDate() + "." + d.getMonth() + 1 + "." + d.getFullYear();
+});
 
 
 $('#wrapper').dialog({
