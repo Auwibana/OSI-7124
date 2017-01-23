@@ -2,6 +2,8 @@ var requestGet = new XMLHttpRequest();
 var start
 var end
 var zwischen
+var time
+var date
 
 requestGet.onreadystatechange = function() {
 	// console.log("onreadystatechange: " + requestGet.readyState + ", " +  requestGet.status);
@@ -44,11 +46,17 @@ var handlersGet = {
 function auswahlGet(response) {
 	start = response.start
 	end = response.end
+	time = response.time
+	date = response.date
 }
 
 function optionGet(response) {
 	zwischen = response.zwischenstops
 }
+
+$(document).ready(function(){
+	document.getElementById('waitingtime').innerHTML = "Ankunft: "+date + " "+ time
+})
 
 
 function myMap() {
