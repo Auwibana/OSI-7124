@@ -161,7 +161,16 @@
                             <div class="form-group">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9" id="list-group-id">
-                                    <ul class="list-group"></ul>
+									<div class="alert alert-danger alert-dismissible" id="alert-full-list" style="display: none;">
+										<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+    									<strong>Warning!</strong> You can't insert more than 4 interstops!
+									</div>
+									<div class="alert alert-danger alert-dismissible" id="alert-empty-input" style="display: none;">
+										<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+    									<strong>Warning!</strong> Please insert the location of the interstop first!
+									</div>
+
+                                    <ul class="list-group" id="waypoints"></ul>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -218,7 +227,7 @@
                                     <label class="col-sm-3 control-label">Zwischenstops:</label>
                                 </div>
                                 <div class="col-sm-8" id="list-group-id-check">
-                                    <ul class="list-group-check">
+                                    <ul class="list-group-check" id="waypoints-check">
                                     </ul>
                                 </div>
                             </div>
@@ -257,7 +266,7 @@
                                         <p>
                                             <h3>Bestellung abgeschlossen</h3>
                                         </p><br></br>
-                                        <p id="wartezeit">Wartezeit: 5:00 Minuten</p>
+                                        <p id="wartezeit">Ankunft:</p>
                                     </div>
                                     <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
                                 </div>

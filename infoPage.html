@@ -6,6 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>OSI-7124</title>
 
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
         <script src="js/infoPage.js">
         </script>
 
@@ -31,7 +35,7 @@
 	          <span class="icon-bar"></span>
 	          <span class="icon-bar"></span>
 	        </button>
-                    <a class="navbar-brand" href="index.html">OSI-7124</a>
+                    <a class="navbar-brand" href="#">OSI-7124</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,10 +46,10 @@
                         </li>
 
                     </ul>
-                    <!--<ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-user"> Registrieren</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"> Anmelden</a></li>
-                    </ul>-->
+                    </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
@@ -58,27 +62,41 @@
         </div>
 
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="map" style="width:100%;height:400px"></div>
-                    <div id="directionsPanel" style="float:right;width:30%;height 100%"></div>
+            <div class="col-sm-12 col-md-8 pull-right">
+                <div id="map" style="width:100%;height:400px"></div>
+                <div id="directionsPanel" style="float:right;width:30%;height 100%"></div>
+            </div>
+            <div class="col-sm-12 col-md-4 pull-left">
+                <div class="row">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <h4 class="list-group-item-heading active">Hannover</h4>
+                            <p class="list-group-item-text">
+                                Leibniz-Universität
+                            </p>
+                        </li>
+                        <li class="list-group-item"></li>
+                        <li class="list-group-item"></li>
+                        <li class="list-group-item"></li>
+                        <li class="list-group-item"></li>
+                        <li class="list-group-item"></li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-4">
+                        <div class="container">
+                            <div class="btn-group">
+                                <label class="btn btn-primary" id="waitingtime">Wartezeit: 5 Minuten</label>
+                                <a href="order.html" class="btn btn-primary">Weiteres Auto bestellen</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx0jxbskZB744V0-NKGVaW0VeTnwfIyY&callback=myMap"></script>
-
-            <br>
         </div>
 
-        <div class="container">
-            <div class="btn-group btn-group-justified">
-                <label class="btn btn-primary" id="waitingtime">Wartezeit: 5 Minuten</label>
-                <a href="order.html" class="btn btn-primary">Weiteres Auto bestellen</a>
-            </div>
-        </div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx0jxbskZB744V0-NKGVaW0VeTnwfIyY&callback=myMap"></script>
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </body>

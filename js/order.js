@@ -80,6 +80,7 @@ function auswahl(response) {
     var end = document.getElementById("ziel").value
     var date = document.getElementById("date").value
     var time = document.getElementById("time").value
+    document.getElementById('wartezeit').innerHTML="Ankunft: "+date + " "+ time
     put(response, {
         "start": start,
         "end": end,
@@ -92,9 +93,14 @@ function option(response) {
     var persons = document.getElementById("persons").value
     var passenger = document.getElementById("passenger").checked
     var zwischenstops = []
-    if (document.getElementById("zwischenstops").value != "") {
-        zwischenstops.push(document.getElementById("zwischenstops").value)
+    var ul = document.getElementById('waypoints').getElementsByTagName('li')
+    for(var i = 0; i<ul.length; i++){
+      zwischenstops.push(ul[i].innerHTML)
     }
+    console.log(zwischenstops)
+    //if (document.getElementById("zwischenstops").value != "") {
+    //    zwischenstops.push(document.getElementById("zwischenstops").value)
+    //}
     put(response, {
         "persons": persons,
         "passenger": passenger,
@@ -108,6 +114,7 @@ $(document).ready(function() {
     var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
         allNextBtn = $('.nextBtn');
+        allBackBtn = $('.backBtn')
 
     allWells.hide();
 
@@ -144,6 +151,25 @@ $(document).ready(function() {
             nextStepWizard.removeAttr('disabled').trigger('click');
     });
 
+    allBackBtn.click(function() {
+        var curStep = $(this).closest(".setup-content"),
+            curStepBtn = curStep.attr("id"),
+            nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a"),
+            curInputs = curStep.find("input[type='text'],input[type='url']"),
+            isValid = true;
+
+        $(".form-group").removeClass("has-error");
+        for (var i = 0; i < curInputs.length; i++) {
+            if (!curInputs[i].validity.valid) {
+                isValid = false;
+                $(curInputs[i]).closest(".form-group").addClass("has-error");
+            }
+        }
+
+        if (isValid)
+            nextStepWizard.removeAttr('disabled').trigger('click');
+    });
+
     $('div.setup-panel div a.btn-primary').trigger('click');
 });
 
@@ -159,32 +185,51 @@ $('#date').datepicker({
 
 $('#input-group-button').click(function() {
     var length = $('#list-group-id ul li').length;
+	var isFormValid = true;
 
-    if (length == 0) {
-        $("#list-group-id ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
 
-        $("#list-group-id-check ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint-check"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint-check"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
+    $("#zwischenstops").each(function(){
+        if ($.trim($(this).val()).length == 0){
+            $(this).addClass("highlight");
+            isFormValid = false;
+        }
+        else{
+            $(this).removeClass("highlight");
+        }
+    });
+        //$("#list-group-id-check ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint-check"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint-check"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
 
-    } else if (length == 1) {
-        $("#list-group-id ul").append('<div id="breakpoint" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
+    if (!isFormValid) $('#alert-empty-input').show();
 
-        $("#list-group-id-check ul").append('<div id="breakpoint-check" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
+        //$("#list-group-id-check ul").append('<div id="breakpoint-check" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
 
-    } else if (length < 4) {
-        $("#breakpoint").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+	else {
+	    if (length == 0) {
+	        $("#list-group-id ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
 
-        $("#breakpoint-check").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+        	//$("#breakpoint-check").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
 
-    } else {
-        alert("You can't insert more than 4 interstops, sorry!")
-    }
+	    } else if (length == 1) {
+	        $("#list-group-id ul").append('<div id="breakpoint" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
 
-    var updated_length = $('#list-group-id ul li').length;
+	        $("#list-group-id-check ul").append('<div id="breakpoint-check" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
 
-    if (updated_length > 1) {
-        $('#badge_breakpoint').html($('#list-group-id ul li').length);
-        $('#badge_breakpoint-check').html($('#list-group-id-check ul li').length);
-    }
+	    } else if (length < 4) {
+	        $("#breakpoint").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+
+	        $("#breakpoint-check").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+
+	    } else {
+			$('#alert-full-list').show();
+	    }
+
+	    var updated_length = $('#list-group-id ul li').length;
+
+	    if (updated_length > 1) {
+	        $('#badge_breakpoint').html($('#list-group-id ul li').length);
+	        $('#badge_breakpoint-check').html($('#list-group-id-check ul li').length);
+	    }
+	}
 });
 
 $('#timepicker').datetimepicker({
