@@ -232,6 +232,14 @@ function checkTime(i) {
 }
 document.getElementById('time').value = checkTime(d.getHours()) + ":" + checkTime(d.getMinutes());
 
+$('#current_time').click(function() {
+	document.getElementById('time').value = checkTime(d.getHours()) + ":" + checkTime(d.getMinutes());
+});
+
+$('#current_date').click(function() {
+	document.getElementById('date').value = d.getDate() + "." + d.getMonth() + 1 + "." + d.getFullYear();
+});
+
 
 $('#wrapper').dialog({
     height: 400,
