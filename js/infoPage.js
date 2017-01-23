@@ -40,7 +40,8 @@ var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlersGet = {
     "option": optionGet,
-    "auswahl": auswahlGet
+    "auswahl": auswahlGet,
+		"login":login
 };
 
 function auswahlGet(response) {
@@ -52,9 +53,27 @@ function auswahlGet(response) {
 
 function optionGet(response) {
     zwischen = response.zwischenstops
+		for(var i = 0; i<response.zwischenstopsHtml.length;i++){
+			var li = document.createElement('li')
+			li.innerHTML = response.zwischenstopsHtml[i]
+			li.className += 'list-group-item'
+			if(i==0){
+				li.children[0].removeChild(li.children[0].children[0])
+			}
+			document.getElementById('waypoints-check-info').appendChild(li)
+		}
 }
 
+function login(response){
+	document.getElementById("reg").innerHTML = " "+response.login
+	$('#login').hide()
+	$('#logout').show()
+	$('#login-popup').popover('hide')
+}
 
+$('document').ready(function(){
+	get('login')
+})
 
 function myMap() {
 

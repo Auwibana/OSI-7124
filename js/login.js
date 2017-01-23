@@ -177,6 +177,7 @@ function initService() {
 $('document').ready(function(){
   createDB()
 	$('#logout').hide()
+	document.getElementById('bestellen').disabled = true
   var str = '<div style="margin-top: 10px;"><div class="form-group userDiv"><label for="" class="control-label">Username</label><input type="text" id="username" class="form-control"  placeholder=""></div><div class="form-group passDiv"><label for="" class="control-label">Passwort</label><input type="password" class="form-control" id="pass" placeholder=""></div><div style="margin-bottom: 10px"><button class="btn btn-primary pull-right" id="login-btn"'+" onclick=login() "+'>Anmelden</button></div>'
    $('#login-popup').popover({container:'body', content: str, html:true, trigger: 'click'});
 });

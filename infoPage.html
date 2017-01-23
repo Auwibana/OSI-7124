@@ -48,8 +48,9 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"> Registrieren</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"> Anmelden</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user" id="reg"> Registrieren</a></li>
+                        <li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"> Anmelden</a></li>
+                          <li id="logout"><a href="index.html" onclick="$('#login').show();$('#logout').hide();$('#reg').html(' Registrieren')"><span class="glyphicon glyphicon-log-in"> Logout</span></a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -71,7 +72,7 @@
             </div>
             <div class="col-sm-12 col-md-4 col-xs-12 pull-left">
                 <div class="row">
-                    <ul class="list-group">
+                    <ul class="list-group" id="waypoints-check-info">
                         <li class="list-group-item">
                             <h4 class="list-group-item-heading active">Hannover</h4>
                             <p class="list-group-item-text">

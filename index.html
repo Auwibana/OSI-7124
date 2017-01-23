@@ -34,6 +34,7 @@
 				<a class="navbar-brand" href="#"><span class="glyphicon glyphicon-road"></span> OSI-7124</a>
 			</div>
 
+
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav">
@@ -41,17 +42,17 @@
 						<a href="#"></a>
 					</li>
 
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-user" id="reg" data-toggle="modal" data-target="#navreg"> Registrieren</span></a></li>
-					<li id="login"><a href="#" id='login-popup' data-toggle="popover" data-placement="bottom"><span class="glyphicon glyphicon-log-in" id="an"> Anmelden</span></a></li>
-					<li id="logout"><a href="#" onclick="$('#login').show();$('#logout').hide();$('#reg').html(' Registrieren')"><span class="glyphicon glyphicon-log-in"> Logout</span></a></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+    <li><a href="#"><span class="glyphicon glyphicon-user" id="reg" data-toggle="modal" data-target="#navreg"> Registrieren</span></a></li>
+    <li id="login"><a href="#" id='login-popup' data-toggle="popover" data-placement="bottom"><span class="glyphicon glyphicon-log-in" id="an"> Anmelden</span></a></li>
+    <li id="logout"><a href="#" onclick="$('#login').show();$('#logout').hide();$('#reg').html(' Registrieren');document.getElementById('bestellen').disabled = true"><span class="glyphicon glyphicon-log-in"> Logout</span></a></li>
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</div>
+<!-- /.container-fluid -->
+</nav>
         <div class="jumbotron text-center " style="margin-top:32px">
             <div class="space-top"></div>
             <h1><span class="glyphicon glyphicon-road"></span> OSI-7124</h1>
@@ -59,7 +60,7 @@
             <p>Die achte Schicht des CarSharings!</p>
             <div class="space-between"></div>
             <form action="order.html" method="GET">
-                <button type="submit" class="btn btn-primary btn-lg">
+                <button type="submit" class="btn btn-primary btn-lg" id="bestellen">
 		  		Auto bestellen
 			</button>
 		</form>
