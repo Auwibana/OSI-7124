@@ -159,32 +159,49 @@ $('#date').datepicker({
 
 $('#input-group-button').click(function() {
     var length = $('#list-group-id ul li').length;
+	var isFormValid = true;
 
-    if (length == 0) {
-        $("#list-group-id ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
 
-        $("#list-group-id-check ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint-check"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint-check"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
+    $("#zwischenstops").each(function(){
+        if ($.trim($(this).val()).length == 0){
+            $(this).addClass("highlight");
+            isFormValid = false;
+        }
+        else{
+            $(this).removeClass("highlight");
+        }
+    });
 
-    } else if (length == 1) {
-        $("#list-group-id ul").append('<div id="breakpoint" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
+    if (!isFormValid) $('#alert-empty-input').show();
 
-        $("#list-group-id-check ul").append('<div id="breakpoint-check" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
 
-    } else if (length < 4) {
-        $("#breakpoint").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+	else {
+	    if (length == 0) {
+	        $("#list-group-id ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
 
-        $("#breakpoint-check").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+	        $("#list-group-id-check ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint-check"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint-check"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
 
-    } else {
-        alert("You can't insert more than 4 interstops, sorry!")
-    }
+	    } else if (length == 1) {
+	        $("#list-group-id ul").append('<div id="breakpoint" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
 
-    var updated_length = $('#list-group-id ul li').length;
+	        $("#list-group-id-check ul").append('<div id="breakpoint-check" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
 
-    if (updated_length > 1) {
-        $('#badge_breakpoint').html($('#list-group-id ul li').length);
-        $('#badge_breakpoint-check').html($('#list-group-id-check ul li').length);
-    }
+	    } else if (length < 4) {
+	        $("#breakpoint").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+
+	        $("#breakpoint-check").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+
+	    } else {
+			$('#alert-full-list').show();
+	    }
+
+	    var updated_length = $('#list-group-id ul li').length;
+
+	    if (updated_length > 1) {
+	        $('#badge_breakpoint').html($('#list-group-id ul li').length);
+	        $('#badge_breakpoint-check').html($('#list-group-id-check ul li').length);
+	    }
+	}
 });
 
 $('#timepicker').datetimepicker({
