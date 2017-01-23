@@ -1,6 +1,11 @@
 .jumbotron {
-	background-color: powderblue;
+	/*background-color: powderblue;
+	color: white;*/
 	color: white;
+	background-image: url("https://static.pexels.com/photos/27703/pexels-photo-27703.jpg");
+    background-size: cover;
+	background-repeat:no-repeat;
+	min-height: 500px;
 }
 
 .space-top {
@@ -19,8 +24,12 @@
 	margin-bottom: 50px;
 }
 
+.pac-container{
+	z-index: 1051 !important
+}
+
 h1 {
-	
+
 }
 
 p {

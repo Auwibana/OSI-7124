@@ -50,7 +50,7 @@
             <!-- /.container-fluid -->
         </nav>
 
-        <div class="jumbotron text-center" style="margin-top:32px">
+        <div class="jumbotron text-center " style="margin-top:32px">
             <div class="space-top"></div>
             <h1>OSI-7124</h1>
             <div class="space-headline"></div>
@@ -93,16 +93,8 @@
                         </div>
                         <hr>
                         <div class="form-group">
-                            <label for="">Ort</label>
+                            <label for="">Adresse</label>
                             <input type="text" class="form-control" id="home" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="">PLZ</label>
-                            <input type="text" class="form-control" id="" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Straße und Hausnummer</label>
-                            <input type="text" class="form-control" id="" placeholder="">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -120,5 +112,6 @@
         <script type="text/javascript" src="js/gui.js"></script>
         <script type="text/javascript" src="js/login.js"></script>
         <script type="text/javascript" src="js/register.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx0jxbskZB744V0-NKGVaW0VeTnwfIyY&signed_in=true&libraries=places&callback=initService" async defer></script>
     </body>
 </html>
