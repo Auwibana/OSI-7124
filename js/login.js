@@ -1,7 +1,7 @@
 var request = new XMLHttpRequest();
 
 request.onreadystatechange = function() {
-	console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
+	//console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
 	// console.log(request.responseText);
 	if (request.readyState == 4) {
 		if (request.status == 200) {
@@ -51,6 +51,21 @@ function put(response, message) {
 	request.send(s);
 }
 
+function update(response, message){
+	request.open("PUT", dburl + response._id, false);
+	request.setRequestHeader("Content-type", "application/json");
+	message["_id"] = response._id;
+	if (response._rev) {
+		message["_rev"] = response._rev;
+	}
+	for(var key in response){
+		message[key] = response[key]
+	}
+	var s = JSON.stringify(message);
+	// console.log("put: " + s);
+	request.send(s);
+}
+
 function createDB() {
 	request.open("PUT", dburl, false);
 	request.send();
@@ -62,19 +77,17 @@ function createDB() {
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
-	"login": login,
 	"auswahl" : auswahl,
-	"option" : option
+	"option" : option,
+	"register" : register
 };
 
-function login(response) {
-		$('#login-popup').popover('hide')
-		var username = document.getElementById("username").value
-    console.log(username)
-		var pass = document.getElementById("pass").value
-    document.getElementById("reg").innerHTML = " "+username
-    document.getElementById("an").innerHTML = " Logout"
-	put(response, {"home" : "Stöckener Markt, Eichsfelder Straße, Hannover, Deutschland", "user":username, "pass":pass})
+function register(response){
+	console.log(response)
+	var name = document.getElementById('userReg').value
+	var obj = {}
+	obj[name] = {"pass":document.getElementById('passReg').value, "home":document.getElementById('home').value}
+	update(response, obj)
 }
 
 function auswahl(response) {
@@ -96,6 +109,6 @@ function option(response) {
 }
 $('document').ready(function(){
   createDB()
-  var str = '<div style="margin:20px"><div class="form-group"><label for="" class="control-label">Username</label><input type="text" id="username" class="form-control"  placeholder=""></div><div class="form-group"><label for="" class="control-label">Passwort</label><input type="password" class="form-control" id="pass" placeholder=""></div><div class="form-group"><button class="btn btn-default pull-right" id="login-btn"'+" onclick=set('login') "+'>Anmelden</button></div>'
+  var str = '<div style="margin:20px"><div class="form-group"><label for="" class="control-label">Username</label><input type="text" id="username" class="form-control"  placeholder=""></div><div class="form-group"><label for="" class="control-label">Passwort</label><input type="password" class="form-control" id="pass" placeholder=""></div><div class="form-group"><button class="btn btn-default pull-right" id="login-btn"'+" onclick=get('register') "+'>Anmelden</button></div>'
    $('#login-popup').popover({container:'body', content: str, html:true, trigger: 'click'});
 });

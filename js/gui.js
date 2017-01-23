@@ -66,13 +66,26 @@ function update() {
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlersGet = {
-	"login" : loginGet,
+	"register" : registerGet,
 	"option" : optionGet,
 	"auswahl": auswahlGet
 };
 
-function loginGet(response) {
-	document.getElementById("ziel").value = response.home
+function registerGet(response) {
+	$('#login-popup').popover('hide')
+	var user = document.getElementById('username').value
+	var pass = document.getElementById('pass').value
+	if(response[user]){
+		var uobj = response[user]
+		if(uobj.pass == pass){
+			document.getElementById("reg").innerHTML = " "+user
+			document.getElementById("an").innerHTML = " Logout"
+		}else{
+			alert("wrong password")
+		}
+	}else{
+		alert("user not found")
+	}
 }
 
 function auswahlGet(response) {

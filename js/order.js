@@ -1,7 +1,7 @@
 var request = new XMLHttpRequest();
 
 request.onreadystatechange = function() {
-    console.log("onreadystatechange: " + request.readyState + ", " + request.status);
+    //console.log("onreadystatechange: " + request.readyState + ", " + request.status);
     // console.log(request.responseText);
     if (request.readyState == 4) {
         if (request.status == 200) {
@@ -232,7 +232,7 @@ $('#input-group-button').click(function() {
 	}
 });
 
-$('#timepicker').datetimepicker({
+$('#time').datetimepicker({
     datepicker: false,
     format: 'H:i',
 	step: 15
