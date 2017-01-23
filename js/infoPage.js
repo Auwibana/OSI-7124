@@ -117,7 +117,7 @@ function myMap() {
 
 	moveCar(map, start);
 
-	getTravelTime(start, end, waypoints);
+	//getTravelTime(start, end, waypoints);
 
     // nachdem das Auto angekommen ist
     // map.clearOverlays();
@@ -185,7 +185,7 @@ function getTravelTime(start, end, waypoints){
 					time += result.routes[0].legs[i].duration.value;
 				}
 
-				alert(time / 60);
+				//alert(time / 60);
 	    }
 	  });
 }
@@ -339,7 +339,7 @@ function moveCar(map, start){
 												overlay = showCar(map, waypoints[counter], start);
 												counter++;
 
-											}, 1000, waypoints);
+											}, 5000, waypoints);
 
 
 								    }
