@@ -80,7 +80,7 @@ function auswahl(response) {
     var end = document.getElementById("ziel").value
     var date = document.getElementById("date").value
     var time = document.getElementById("time").value
-    document.getElementById('wartezeit').innerHTML="Ankunft: "+date + " "+ time
+    document.getElementById('wartezeit').innerHTML = "Ankunft: " + date + " " + time
     put(response, {
         "start": start,
         "end": end,
@@ -94,8 +94,8 @@ function option(response) {
     var passenger = document.getElementById("passenger").checked
     var zwischenstops = []
     var ul = document.getElementById('waypoints').getElementsByTagName('li')
-    for(var i = 0; i<ul.length; i++){
-      zwischenstops.push(ul[i].innerHTML)
+    for (var i = 0; i < ul.length; i++) {
+        zwischenstops.push(ul[i].innerHTML)
     }
     console.log(zwischenstops)
     //if (document.getElementById("zwischenstops").value != "") {
@@ -114,7 +114,7 @@ $(document).ready(function() {
     var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
         allNextBtn = $('.nextBtn');
-        allBackBtn = $('.backBtn')
+    allBackBtn = $('.backBtn')
 
     allWells.hide();
 
@@ -185,64 +185,58 @@ $('#date').datepicker({
 
 $('#input-group-button').click(function() {
     var length = $('#list-group-id ul li').length;
-	var isFormValid = true;
+    var isFormValid = true;
 
 
-    $("#zwischenstops").each(function(){
-        if ($.trim($(this).val()).length == 0){
+    $("#zwischenstops").each(function() {
+        if ($.trim($(this).val()).length == 0) {
             $(this).addClass("highlight");
             isFormValid = false;
-        }
-        else{
+        } else {
             $(this).removeClass("highlight");
         }
     });
-        //$("#list-group-id-check ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint-check"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint-check"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
 
     if (!isFormValid) $('#alert-empty-input').show();
 
-        //$("#list-group-id-check ul").append('<div id="breakpoint-check" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
+    else {
+        if (length == 0) {
+            $("#list-group-id ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
 
-	else {
-	    if (length == 0) {
-	        $("#list-group-id ul").append('<li class="list-group-item"data-toggle="collapse"data-target="#breakpoint"style="cursor: pointer;"><h4  class="list-group-item-heading">Hannover<span class="badge pull-right" id="badge_breakpoint"></span></h4><p class="list-group-item-text">Leibniz Universität</p></li>');
+        } else if (length == 1) {
+            $("#list-group-id ul").append('<div id="breakpoint" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
 
-        	//$("#breakpoint-check").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+            $("#list-group-id-check ul").append('<div id="breakpoint-check" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
 
-	    } else if (length == 1) {
-	        $("#list-group-id ul").append('<div id="breakpoint" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
+        } else if (length < 4) {
+            $("#breakpoint").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
 
-	        $("#list-group-id-check ul").append('<div id="breakpoint-check" class="collapse"><li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li></div>');
+            $("#breakpoint-check").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
 
-	    } else if (length < 4) {
-	        $("#breakpoint").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+        } else {
+            $('#alert-full-list').show();
+        }
 
-	        $("#breakpoint-check").append('<li class="list-group-item"><h4 class="list-group-item-heading">Hannover</h4><p class="list-group-item-text">' + length + '</p></li>');
+        var updated_length = $('#list-group-id ul li').length;
 
-	    } else {
-			$('#alert-full-list').show();
-	    }
-
-	    var updated_length = $('#list-group-id ul li').length;
-
-	    if (updated_length > 1) {
-	        $('#badge_breakpoint').html($('#list-group-id ul li').length);
-	        $('#badge_breakpoint-check').html($('#list-group-id-check ul li').length);
-	    }
-	}
+        if (updated_length > 1) {
+            $('#badge_breakpoint').html($('#list-group-id ul li').length);
+            $('#badge_breakpoint-check').html($('#list-group-id-check ul li').length);
+        }
+    }
 });
 
 $('#time').datetimepicker({
     datepicker: false,
     format: 'H:i',
-	step: 15
+    step: 15
 });
 
 var d = new Date();
 document.getElementById('date').value = d.getDate() + "." + d.getMonth() + 1 + "." + d.getFullYear();
 
 function checkTime(i) {
-	return (i < 10) ? "0" + i : i;
+    return (i < 10) ? "0" + i : i;
 }
 document.getElementById('time').value = checkTime(d.getHours()) + ":" + checkTime(d.getMinutes());
 
@@ -282,16 +276,13 @@ $('#car_ordered_opener').click(function() {
 });
 
 $('#next-button-step-1').click(function() {
-    $('#step-button-1').removeClass('btn-circle-step');
-    $('#step-button-1').addClass('btn-circle');
+    $('#step-button-1').removeClass('btn-circle-step').addClass('btn-circle');
 });
 
 $('#next-button-step-2').click(function() {
-    $('#step-button-2').removeClass('btn-circle-step');
-    $('#step-button-2').addClass('btn-circle');
+    $('#step-button-2').removeClass('btn-circle-step').addClass('btn-circle');
 });
 
 $('#next-button-step-3').click(function() {
-    $('#step-button-3').removeClass('btn-circle-step');
-    $('#step-button-3').addClass('btn-circle');
+    $('#step-button-3').removeClass('btn-circle-step').addClass('btn-circle');
 });

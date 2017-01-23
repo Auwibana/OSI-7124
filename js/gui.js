@@ -91,7 +91,7 @@ function registerGet(response) {
 function auswahlGet(response) {
 	document.getElementById('standort_p').innerHTML = response.start
 	document.getElementById('ziel_p').innerHTML = response.end
-	document.getElementById('time_p').innerHTML = response.time
+	document.getElementById('time_p').innerHTML = response.time + " Uhr"
 	document.getElementById('date_p').innerHTML = response.date
 }
 
