@@ -98,7 +98,6 @@ function optionGet(response) {
 
 	document.getElementById('passenger_p').innerHTML = response.persons
 	document.getElementById('preis_p').innerHTML = "Preis: "+20+response.persons*5 +"€"
-	document.getElementById('preis').innerHTML = "Preis: "+20+response.persons*5 +"€"
 	document.getElementById('waypoints-check-table').innerHTML = "<ul id='waypoints-check'></ul>"
 	for(var i = 0; i<response.zwischenstopsHtml.length;i++){
 		var li = document.createElement('li')
@@ -109,10 +108,6 @@ function optionGet(response) {
 		}
 		document.getElementById('waypoints-check').appendChild(li)
 	}
-	//if(response.zwischenstops != ""){
-	//	document.getElementById('zwischenList').innerHTML = "<li>"+response.zwischenstops+"</li>"
-	//}
-	document.getElementById("wartezeit").innerHTML = "Wartezeit: " + Math.floor(Math.random()*5) +":" +Math.floor(Math.random()*60)
 }
 
 function login(){

@@ -1,4 +1,5 @@
 var request = new XMLHttpRequest();
+var waypoints = []
 
 request.onreadystatechange = function() {
     //console.log("onreadystatechange: " + request.readyState + ", " + request.status);
@@ -93,8 +94,13 @@ function option(response) {
     put(response, {
         "persons": persons,
         "passenger": passenger,
-        "zwischenstopsHtml": zwischenstopsHtml
+        "zwischenstopsHtml": zwischenstopsHtml,
+        "zwischenstops":waypoints
     });
+}
+
+function addWaypoint(){
+  waypoints.push(document.getElementById('zwischenstops').value)
 }
 
 $(document).ready(function() {

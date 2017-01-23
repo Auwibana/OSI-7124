@@ -54,9 +54,6 @@ function optionGet(response) {
     zwischen = response.zwischenstops
 }
 
-$(document).ready(function() {
-    document.getElementById('waitingtime').innerHTML = "Ankunft: " + date + " " + time
-})
 
 
 function myMap() {
@@ -92,7 +89,6 @@ function myMap() {
 	var  waypoints = [];
 
 	zwischen.forEach((n) => {
-		console.log(n)
 		var waypoints_obj = {
 			location: n,
 			stopover: true
