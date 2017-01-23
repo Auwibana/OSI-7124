@@ -97,7 +97,7 @@ function optionGet(response) {
 	} else document.getElementById('take_passengers_p').innerHTML = "Nein"
 
 	document.getElementById('passenger_p').innerHTML = response.persons
-	document.getElementById('preis_p').innerHTML = "Preis: "+20+response.persons*5 +"€"
+	document.getElementById('preis_p').innerHTML = "Preis: "+(20+response.persons*5) +"€"
 	document.getElementById('waypoints-check-table').innerHTML = "<ul id='waypoints-check'></ul>"
 	for(var i = 0; i<response.zwischenstopsHtml.length;i++){
 		var li = document.createElement('li')
