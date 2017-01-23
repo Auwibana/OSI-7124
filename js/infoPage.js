@@ -77,31 +77,27 @@ $('document').ready(function(){
 
 function myMap() {
 
-    var map;
-    directionsDisplay = new google.maps.DirectionsRenderer();
+  var map;
+  directionsDisplay = new google.maps.DirectionsRenderer();
 
 
-    var mapOptions = {
-        // change the center of the map to users location or hardcode it for a borad view on Germany
-        center: new google.maps.LatLng(52.3758916, 9.7320104),
-        zoom: 11
-    }
+  var mapOptions = {
+      // change the center of the map to users location or hardcode it for a borad view on Germany
+      center: new google.maps.LatLng(52.3758916, 9.7320104),
+      zoom: 11
+  }
 
-    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 
-    directionsDisplay.setMap(map);
+  directionsDisplay.setMap(map);
 
-    // Directions panel gibt eine Weg Beschreibung die brauchen wir aber gerade nicht.
-    //directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+  // Directions panel gibt eine Weg Beschreibung die brauchen wir aber gerade nicht.
+  //directionsDisplay.setPanel(document.getElementById("directionsPanel"));
 
-    showCar(map)
+  //showCar(map)
 
-    // calcRoute(directionsDisplay);
-	lat= 52.3759;
-	lng= 9.732;
-
-	showCar(map, lat, lng);
+	//showCar(map, lat, lng);
 
 	// Es können beliebig viele waypoints hier erstellt werden, um sie als zwischenstops zu nutzen
 	get("option");
@@ -119,6 +115,9 @@ function myMap() {
 
 	calcRoute(directionsDisplay, start, end, waypoints);
 
+	moveCar(map, start);
+
+	getTravelTime(start, end, waypoints);
 
     // nachdem das Auto angekommen ist
     // map.clearOverlays();
@@ -134,18 +133,6 @@ function calcRoute(directionsDisplay, start, end, waypoints) {
 
     var directionsService = new google.maps.DirectionsService();
 
-    // Es können beliebig viele waypoints hier erstellt werden, um sie als zwischenstops zu nutzen
-    get("option")
-    var waypoints = [];
-
-    zwischen.forEach((n) => {
-        var waypoints_obj = {
-            location: n,
-            stopover: true
-        };
-        waypoints.push(waypoints_obj);
-    })
-
     // Beispiele zur Eingabe der Zeit
 
     //var today = new Date();
@@ -154,7 +141,7 @@ function calcRoute(directionsDisplay, start, end, waypoints) {
     //var birthday = new Date(1995,11,17);
     //var birthday = new Date(1995,11,17,3,24,0);
 
-    var departure_time = new Date().getTime() / 1000;
+    var departure_time = new Date(1995,11,17,3,24,0);
 
     get("auswahl")
     var request = {
@@ -163,7 +150,9 @@ function calcRoute(directionsDisplay, start, end, waypoints) {
         travelMode: google.maps.TravelMode.DRIVING,
         waypoints: waypoints,
         optimizeWaypoints: true,
-        departure_time: departure_time
+				transitOptions: {
+					        departureTime: departure_time
+				}
     };
     directionsService.route(request, function(result, status) {
         if (status == google.maps.DirectionsStatus.OK) {
@@ -172,43 +161,7 @@ function calcRoute(directionsDisplay, start, end, waypoints) {
     });
 }
 
-function showCar(map) {
-
-    var carLattLng = {
-        lat: 52.3759,
-        lng: 9.732
-    };
-	var directionsService = new google.maps.DirectionsService();
-
-	// Beispiele zur Eingabe der Zeit
-
-	//var today = new Date();
-	//var birthday = new Date("December 17, 1995 03:24:00");
-	//var birthday = new Date("1995-12-17T03:24:00");
-	//var birthday = new Date(1995,11,17);
- 	//var birthday = new Date(1995,11,17,3,24,0);
-
-	var depature_time = new Date("December 17, 1995 03:24:00");
-
-  var request = {
-    origin: start,
-    destination: end,
-    travelMode: google.maps.TravelMode.DRIVING,
-		waypoints: waypoints,
-		optimizeWaypoints: true,
-		transitOptions: {
-			departureTime: depature_time
-		}
-  };
-  directionsService.route(request, function(result, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(result);
-    }
-  });
-}
-
 function getTravelTime(start, end, waypoints){
-		var depature_time = new Date("December 17, 1995 03:24:00");
 
 		var directionsService = new google.maps.DirectionsService();
 
@@ -216,18 +169,19 @@ function getTravelTime(start, end, waypoints){
 			origin: start,
 			destination: end,
 			travelMode: google.maps.TravelMode.DRIVING,
-			waypoints: waypoints,
 			optimizeWaypoints: true,
-			transitOptions: {
-				departureTime: depature_time
-			}
 		};
+
+		if(waypoints != undefined){
+			request.waypoints = waypoints;
+		}
+
 
 		directionsService.route(request, function(result, status) {
 	    if (status == google.maps.DirectionsStatus.OK) {
 				var time = 0;
 
-				for(var i = 0; i < results.routes[0].legs.length; i++){
+				for(var i = 0; i < result.routes[0].legs.length; i++){
 					time += result.routes[0].legs[i].duration.value;
 				}
 
@@ -268,29 +222,27 @@ function getWayCoordinates(start, end, waypoints){
 	  });
 }
 
-function showCar(map, lat, lng){
+function showCar(map, startCord, end){
 
-	var carLattLng = {lat: lat, lng: lng};
+  var relativePixelSize = scaleImageWIthZoom(map);
 
-    var relativePixelSize = scaleImageWIthZoom(map);
+  var marker = new google.maps.Marker({
+      position: startCord,
+      map: map,
+      title: "Dein Auto",
+      icon: null
+  });
 
-    var marker = new google.maps.Marker({
-        position: carLattLng,
-        map: map,
-        title: "Dein Auto",
-        icon: null
-    });
+  setMarkerIcon(marker, relativePixelSize);
 
-    setMarkerIcon(marker, relativePixelSize);
+  google.maps.event.addListener(map, "zoom_changed", function() {
 
-    addInfoWindowToMarker(map, marker, "Auto");
+      var relativePixelSize = scaleImageWIthZoom(map);
+      setMarkerIcon(marker, relativePixelSize);
 
-    google.maps.event.addListener(map, "zoom_changed", function() {
+  });
 
-        var relativePixelSize = scaleImageWIthZoom(map);
-        setMarkerIcon(marker, relativePixelSize);
-
-    });
+	return marker;
 }
 
 function scaleImageWIthZoom(map) {
@@ -326,6 +278,81 @@ function addInfoWindowToMarker(map, marker, contentString) {
     infowindow.open(map, marker)
 }
 
-function convertDate(date, time){
+function moveCar(map, start){
 
+	// generates a random position for the car
+	geocoder = new google.maps.Geocoder();
+
+	geocoder.geocode( { 'address': start}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+
+				var lat = Math.random() / 100 + results[0].geometry.location.lat();
+				var lng = Math.random() / 100 + results[0].geometry.location.lng();
+
+				var latlng = {
+		        lat: lat,
+		        lng: lng
+		    };
+		    geocoder.geocode({
+		        'location': latlng
+		    }, function(results, status) {
+		        if (status === google.maps.GeocoderStatus.OK) {
+		            if (results[0]) {
+
+									var directionsService = new google.maps.DirectionsService();
+
+									var request = {
+										origin: results[0].formatted_address,
+										destination: start,
+										travelMode: google.maps.TravelMode.DRIVING,
+										optimizeWaypoints: true,
+									};
+
+									directionsService.route(request, function(result, status) {
+								    if (status == google.maps.DirectionsStatus.OK) {
+											var waypoints = [];
+											// ich gehe hier davon aus das das auto keine zwischenstops mehr macht
+											// und einfach einer geraden Route folgt
+											// das zu ändern wäre aber einfach man müsste mit einer zweiten for schleife
+											// einfach nochmal über legs iterieren
+											//results.forEach((n,i)=>{console.log(n+ " "+  i)});
+											//alert(JSON.stringify(result));
+
+											//alert(result.routes[0].legs[0].steps[0].end_location);
+
+											for(var i = 0; i < result.routes[0].legs[0].steps.length; i++){
+												waypoints[i] = result.routes[0].legs[0].steps[i].end_location;
+											}
+
+											var counter = 0;
+											var overlay;
+
+											var intervall = setInterval(function(waypoints){
+												if(overlay)	overlay.setMap(null);
+
+												if(counter >= waypoints.length){
+													console.log("finished")
+													clearInterval(intervall);
+												}
+
+												//alert(waypoints);
+												overlay = showCar(map, waypoints[counter], start);
+												counter++;
+
+											}, 1000, waypoints);
+
+
+								    }
+								  });
+		            } else {
+		                window.alert('Geocoder failed due to: ' + status);
+		            }
+		        } else {
+		            window.alert('Geocoder failed due to: ' + status);
+		        }
+		    });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
 }
