@@ -84,8 +84,15 @@ function optionGet(response) {
 	document.getElementById('passenger_p').innerHTML = response.persons
 	document.getElementById('preis_p').innerHTML = 20+response.persons*5 +"€"
 	document.getElementById('preis').innerHTML = 20+response.persons*5 +"€"
-	if(response.zwischenstops != ""){
-		document.getElementById('zwischenList').innerHTML = "<li>"+response.zwischenstops+"</li>"
+	document.getElementById('waypoints-check').innerHTML = ""
+	for(var i = 0; i<response.zwischenstops.length;i++){
+		var li = document.createElement('li')
+		li.innerHTML = response.zwischenstops[i]
+		li.className += 'list-group-item'
+		document.getElementById('waypoints-check').appendChild(li)
 	}
+	//if(response.zwischenstops != ""){
+	//	document.getElementById('zwischenList').innerHTML = "<li>"+response.zwischenstops+"</li>"
+	//}
 	document.getElementById("wartezeit").innerHTML = "Wartezeit: " + Math.floor(Math.random()*5) +":" +Math.floor(Math.random()*60)
 }
