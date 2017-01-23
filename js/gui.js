@@ -96,7 +96,7 @@ function auswahlGet(response) {
 }
 
 function optionGet(response) {
-	
+
 	if(response.passenger) {
 		document.getElementById('take_passengers_p').innerHTML = "Ja"
 	} else document.getElementById('take_passengers_p').innerHTML = "Nein"
@@ -104,11 +104,14 @@ function optionGet(response) {
 	document.getElementById('passenger_p').innerHTML = response.persons
 	document.getElementById('preis_p').innerHTML = 20+response.persons*5 +"€"
 	document.getElementById('preis').innerHTML = 20+response.persons*5 +"€"
-	document.getElementById('waypoints-check').innerHTML = ""
+	document.getElementById('waypoints-check-table').innerHTML = "<ul id='waypoints-check'></ul>"
 	for(var i = 0; i<response.zwischenstops.length;i++){
 		var li = document.createElement('li')
 		li.innerHTML = response.zwischenstops[i]
 		li.className += 'list-group-item'
+		if(i==0){
+			li.children[0].removeChild(li.children[0].children[0])
+		}
 		document.getElementById('waypoints-check').appendChild(li)
 	}
 	//if(response.zwischenstops != ""){
