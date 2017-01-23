@@ -9,6 +9,7 @@
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/index.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,7 +40,7 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user" id="reg"> Registrieren</span></a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user" id="reg" data-toggle="modal" data-target="#navreg"> Registrieren</span></a></li>
                         <li><a href="#" id='login-popup' data-toggle="popover" data-placement="bottom"><span class="glyphicon glyphicon-log-in" id="an"> Anmelden</span></a></li>
                     </ul>
                 </div>
@@ -48,19 +49,67 @@
             <!-- /.container-fluid -->
         </nav>
 
-        <div class="wrapper">
-            <p>Hello World</p>
-        </div>
-
         <div class="jumbotron text-center" style="margin-top:32px">
+            <div class="space-top"></div>
             <h1>OSI-7124</h1>
+            <div class="space-headline"></div>
             <p>Die achte Schicht des CarSharings!</p>
-            <br>
+            <div class="space-between"></div>
             <form action="order.html" method="GET">
                 <button type="submit" class="btn btn-primary btn-lg">
 		  		Auto bestellen
 			</button>
             </form>
+            <div class="space-buttom"></div>
+        </div>
+
+        <!-- Modal -->
+        <div id="navreg" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Registrieren</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Username</label>
+                            <input type="text" class="form-control" id="" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Passwort</label>
+                            <input type="text" class="form-control" id="" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Passwort wiederholen</label>
+                            <input type="text" class="form-control" id="" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <input type="text" class="form-control" id="" placeholder="">
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="">Ort</label>
+                            <input type="text" class="form-control" id="" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">PLZ</label>
+                            <input type="text" class="form-control" id="" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Straße und Hausnummer</label>
+                            <input type="text" class="form-control" id="" placeholder="">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Registrieren</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
