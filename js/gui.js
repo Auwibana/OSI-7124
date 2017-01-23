@@ -72,19 +72,20 @@ var handlersGet = {
 };
 
 function registerGet(response) {
-	$('#login-popup').popover('hide')
 	var user = document.getElementById('username').value
 	var pass = document.getElementById('pass').value
 	if(response[user]){
 		var uobj = response[user]
 		if(uobj.pass == pass){
 			document.getElementById("reg").innerHTML = " "+user
-			document.getElementById("an").innerHTML = " Logout"
+			$('#login').hide()
+			$('#logout').show()
+			$('#login-popup').popover('hide')
 		}else{
-			alert("wrong password")
+			$('.passDiv').append('<div class="alert alert-warning alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong><br>Falsches Passwort</div>')
 		}
 	}else{
-		alert("user not found")
+		$('.userDiv').append('<div class="alert alert-warning alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong><br>Nutzer nicht gefunden</div>')
 	}
 }
 
@@ -102,8 +103,8 @@ function optionGet(response) {
 	} else document.getElementById('take_passengers_p').innerHTML = "Nein"
 
 	document.getElementById('passenger_p').innerHTML = response.persons
-	document.getElementById('preis_p').innerHTML = 20+response.persons*5 +"€"
-	document.getElementById('preis').innerHTML = 20+response.persons*5 +"€"
+	document.getElementById('preis_p').innerHTML = "Preis: "+20+response.persons*5 +"€"
+	document.getElementById('preis').innerHTML = "Preis: "+20+response.persons*5 +"€"
 	document.getElementById('waypoints-check-table').innerHTML = "<ul id='waypoints-check'></ul>"
 	for(var i = 0; i<response.zwischenstops.length;i++){
 		var li = document.createElement('li')
