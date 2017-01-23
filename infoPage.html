@@ -62,12 +62,14 @@
             <p>Die achte Schicht des CarSharings!</p>
         </div>
 
-        <div class="container">
-            <div class="col-sm-12 col-md-8 pull-right">
-                <div id="map" style="width:100%;height:400px"></div>
-                <div id="directionsPanel" style="float:right;width:30%;height 100%"></div>
+        <div class="container-fluid">
+            <div class="col-sm-12 col-md-8 col-xs-12 pull-right">
+                <div class="row">
+                    <div id="map" style="width:100%;height:400px"></div>
+                    <div id="directionsPanel" style="float:right;width:30%;height 100%"></div>
+                </div>
             </div>
-            <div class="col-sm-12 col-md-4 pull-left">
+            <div class="col-sm-12 col-md-4 col-xs-12 pull-left">
                 <div class="row">
                     <ul class="list-group">
                         <li class="list-group-item">
@@ -83,16 +85,14 @@
                         <li class="list-group-item"></li>
                     </ul>
                 </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-xs-12 pull-left">
                 <div class="row">
-                    <div class="col-sm-12 col-md-4">
-                        <div class="btn-group">
-                            <label class="btn btn-primary" id="waitingtime">Wartezeit: 5 Minuten</label>
-                            <a href="order.html" class="btn btn-primary">Weiteres Auto bestellen</a>
-                        </div>
-                    </div>
+                    <a href="order.html" class="btn btn-primary btn-block">Weiteres Smartcar bestellen</a>
                 </div>
             </div>
         </div>
+
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx0jxbskZB744V0-NKGVaW0VeTnwfIyY&callback=myMap"></script>
 
@@ -100,30 +100,3 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </body>
 </html>
-
-<!--<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" href="css/infoPage.css">
-	<script src="js/infoPage.js"> </script>
-	<title>OSI</title>
-</head>
-<body>
-	<div id="siteContainer">
-		<div id="Title">
-			<h1 id="osi"> OSI-7124 </h1>
-
-			<div id="map" style="width:100%;height:400px"></div>
-			<div id="directionsPanel" style="float:right;width:30%;height 100%"></div>
-
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx0jxbskZB744V0-NKGVaW0VeTnwfIyY&callback=myMap&libraries=places"></script>
-
-			<div id="order">
-				<form action="order.html" method="GET">
-					<button type="submit" name="nextSite" value="0" id="orderButton"> Auto bestellen </button>
-				</form>
-			</div>
-		</div>
-	</div>
-</body>
-</html>-->

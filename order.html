@@ -43,8 +43,7 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"> Registrieren</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"> Anmelden</a></li>
+
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -65,11 +64,11 @@
                     </div>
                     <div class="stepwizard-step">
                         <a href="#step-3" type="button" class="btn btn-default btn-circle-step" id="step-button-3">3</a>
-                        <p>Prüfen</p>
+                        <p>Bestätigen</p>
                     </div>
                     <div class="stepwizard-step">
                         <a href="#step-4" type="button" class="btn btn-default btn-circle-step" id="step-button-4">4</a>
-                        <p>Bestätigen</p>
+                        <p>Abschluss</p>
                     </div>
                 </div>
             </div>
@@ -117,8 +116,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('auswahl')" type="button" id="next-button-step-1">Next</button>
-                                    <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
+                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('auswahl')" type="button" id="next-button-step-1">Weiter</button>
+                                    <button type="button" class="btn btn-primary backBtn pull-left">Zurück</button>
                                 </div>
                             </div>
                         </form>
@@ -161,14 +160,14 @@
                             <div class="form-group">
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-8" id="list-group-id">
-									<div class="alert alert-danger alert-dismissible" id="alert-full-list" style="display: none;">
-										<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-    									<strong>Warning!</strong> You can't insert more than 4 interstops!
-									</div>
-									<div class="alert alert-danger alert-dismissible" id="alert-empty-input" style="display: none;">
-										<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-    									<strong>Warning!</strong> Please insert the location of the interstop first!
-									</div>
+                                    <div class="alert alert-danger alert-dismissible" id="alert-full-list" style="display: none;">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                        <strong>Warning!</strong> You can't insert more than 4 interstops!
+                                    </div>
+                                    <div class="alert alert-danger alert-dismissible" id="alert-empty-input" style="display: none;">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                        <strong>Warning!</strong> Please insert the location of the interstop first!
+                                    </div>
                                     <ul class="list-group" id="waypoints"></ul>
                                 </div>
                             </div>
@@ -193,8 +192,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('option');update();" type="button" id="next-button-step-2">Next</button>
-                                    <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
+                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('option');update();" type="button" id="next-button-step-2">Weiter</button>
+                                    <button type="button" class="btn btn-primary backBtn pull-left">Zurück</button>
                                 </div>
                             </div>
                         </form>
@@ -205,7 +204,7 @@
             <div class="row setup-content" id="step-3">
                 <div class="col-xs-6 col-md-offset-3">
                     <div class="col-md-12">
-                        <h3>Prüfen</h3>
+                        <h3>Bestätigen</h3>
                         <table class="table table-condensed">
                             <tbody>
                                 <tr>
@@ -240,32 +239,8 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <!--<form class="form-horizontal">
-                            <div class="form-group">
-                                <label class="col-sm-1"></label>
-                                <label class="col-sm-2 control-label">Start:</label>
-                                <label class="col-sm-4 control-label" id="standort_p"></label>
-                                <label class="col-sm-2 control-label">Preis:</label>
-                                <label class="col-sm-1 control-label" id="preis_p"></label>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-1"></label>
-                                <label class="col-sm-2 control-label">Ziel:</label>
-                                <label class="col-sm-4 control-label" id="ziel_p"></label>
-                                <label class="col-sm-2 control-label">Mitfahrer:</label>
-                                <label class="col-sm-1 control-label" id="passenger_p"></label>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-3">
-                                    <label class="col-sm-3 control-label">Zwischenstops:</label>
-                                </div>
-                                <div class="col-sm-8" id="list-group-id-check">
-                                    <ul class="list-group-check" id="waypoints-check">
-                                    </ul>
-                                </div>
-                            </div>-->
-                        <button class="btn btn-primary nextBtn pull-right" type="button" id="next-button-step-3">Next</button>
-                        <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
+                        <button class="btn btn-primary nextBtn pull-right" type="button" id="next-button-step-3">kostenpflichtig Bestellen</button>
+                        <button type="button" class="btn btn-primary backBtn pull-left">Zurück</button>
                     </div>
                 </div>
             </div>
@@ -273,33 +248,21 @@
             <div class="row setup-content" id="step-4">
                 <div class="col-xs-6 col-md-offset-3">
                     <div class="col-md-12">
-                        <h3>Bestätigen</h3>
-                        <form class="form-horizontal">
-                            <!-- action="infoPage.html" method="GET">-->
-                            <div class="form-group">
-                                <label class="col-sm-2"></label>
-                                <h2 class="col-sm-8">Bestellung abschließen</h2>
+                        <h3>Vielen Dank!</h3>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Vielen Dank <span class="glyphicon glyphicon-heart-empty"></span></h3>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-2"></label>
-                                <label class="col-sm-2">Preis:</label>
-                                <label class="<col-sm-2></col-sm-2>" id="preis">5.30€</label>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-primary pull-right" id="car_ordered_opener">
-								  		Kostenpflichtig bestellen
-										</button>
-                                    <div id="car_ordered_dialog">
-                                        <p>
-                                            <h3>Bestellung abgeschlossen</h3>
-                                        </p><br></br>
-                                        <p id="wartezeit">Ankunft:</p>
-                                    </div>
-                                    <button type="button" class="btn btn-primary backBtn pull-left">Back</button>
+                            <div class="panel-body text-center">
+                                Ihre Bestellung wurde erfolgreich abgeschlossen.<br>Wir wünschen ihnen eine gute Fahrt! <span class="glyphicon glyphicon-thumbs-up"></span>
+                                <div class="row"></div>
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+
+                                    <a href="infoPage.html" class="btn btn-primary btn-right" style="margin-top: 30px;">Zur Startseite >></a>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
