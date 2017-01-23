@@ -74,7 +74,6 @@ function auswahl(response) {
     var end = document.getElementById("ziel").value
     var date = document.getElementById("date").value
     var time = document.getElementById("time").value
-    document.getElementById('wartezeit').innerHTML = "Ankunft: " + date + " " + time
     put(response, {
         "start": start,
         "end": end,

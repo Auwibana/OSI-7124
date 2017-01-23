@@ -86,7 +86,12 @@ var handlers = {
 };
 
 function register(response){
-	console.log(response)
+	console.log($('#passReg').value)
+	if($('#passReg').val() != $('#pass2').val()){
+		$('#warn-message').html("Die Passwörter stimmen nicht überein")
+		$('#alert-login').show()
+		return
+	}
 	var name = document.getElementById('userReg').value
 	var obj = {}
 	obj[name] = {"pass":document.getElementById('passReg').value, "home":document.getElementById('home').value}
@@ -177,7 +182,10 @@ function initService() {
 $('document').ready(function(){
   createDB()
 	$('#logout').hide()
-	document.getElementById('bestellen').disabled = true
+	$('#alert-login').hide()
+	document.getElementById('bestellen').type = "Button"
+	document.getElementById('bestellen').onclick = function(){
+		$('#warn-message').html("Bitte loggen Sie sich zunächst ein!");$('#alert-login').show()}
   var str = '<div style="margin-top: 10px;"><div class="form-group userDiv"><label for="" class="control-label">Username</label><input type="text" id="username" class="form-control"  placeholder=""></div><div class="form-group passDiv"><label for="" class="control-label">Passwort</label><input type="password" class="form-control" id="pass" placeholder=""></div><div style="margin-bottom: 10px"><button class="btn btn-primary pull-right" id="login-btn"'+" onclick=login() "+'>Anmelden</button></div>'
    $('#login-popup').popover({container:'body', content: str, html:true, trigger: 'click'});
 });
