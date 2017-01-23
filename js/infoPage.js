@@ -53,6 +53,15 @@ function auswahlGet(response) {
 
 function optionGet(response) {
     zwischen = response.zwischenstops
+		for(var i = 0; i<response.zwischenstopsHtml.length;i++){
+			var li = document.createElement('li')
+			li.innerHTML = response.zwischenstopsHtml[i]
+			li.className += 'list-group-item'
+			if(i==0){
+				li.children[0].removeChild(li.children[0].children[0])
+			}
+			document.getElementById('waypoints-check-info').appendChild(li)
+		}
 }
 
 function login(response){

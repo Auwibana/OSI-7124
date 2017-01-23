@@ -121,6 +121,7 @@ function login(){
 			$('#login').hide()
 			$('#logout').show()
 			$('#login-popup').popover('hide')
+			document.getElementById('bestellen').disabled = false
 			loginSet(user)
 		}else{
 			$('.passDiv').append('<div class="alert alert-warning alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong><br>Falsches Passwort</div>')
