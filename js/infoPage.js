@@ -83,7 +83,7 @@ function myMap() {
 
     // calcRoute(directionsDisplay);
 	lat= 52.3759;
-	lng: 9.732;
+	lng= 9.732;
 
 	showCar(map, lat, lng);
 
@@ -92,6 +92,7 @@ function myMap() {
 	var  waypoints = [];
 
 	zwischen.forEach((n) => {
+		console.log(n)
 		var waypoints_obj = {
 			location: n,
 			stopover: true
@@ -308,4 +309,8 @@ function addInfoWindowToMarker(map, marker, contentString) {
     });
 
     infowindow.open(map, marker)
+}
+
+function convertDate(date, time){
+
 }

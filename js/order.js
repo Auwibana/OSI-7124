@@ -64,16 +64,9 @@ function createDB() {
 var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlers = {
-    "login": login,
     "auswahl": auswahl,
     "option": option
 };
-
-function login(response) {
-    put(response, {
-        "home": "Stöckener Markt, Eichsfelder Straße, Hannover, Deutschland"
-    })
-}
 
 function auswahl(response) {
     var start = document.getElementById("start").value
@@ -92,25 +85,20 @@ function auswahl(response) {
 function option(response) {
     var persons = document.getElementById("persons").value
     var passenger = document.getElementById("passenger").checked
-    var zwischenstops = []
+    var zwischenstopsHtml = []
     var ul = document.getElementById('waypoints').getElementsByTagName('li')
     for (var i = 0; i < ul.length; i++) {
-        zwischenstops.push(ul[i].innerHTML)
+        zwischenstopsHtml.push(ul[i].innerHTML)
     }
-    console.log(zwischenstops)
-    //if (document.getElementById("zwischenstops").value != "") {
-    //    zwischenstops.push(document.getElementById("zwischenstops").value)
-    //}
     put(response, {
         "persons": persons,
         "passenger": passenger,
-        "zwischenstops": zwischenstops
+        "zwischenstopsHtml": zwischenstopsHtml
     });
 }
 
 $(document).ready(function() {
     createDB()
-    set('login')
     var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
         allNextBtn = $('.nextBtn');

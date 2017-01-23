@@ -19,8 +19,12 @@
 	margin-bottom: 50px;
 }
 
+.pac-container{
+	z-index: 1051 !important
+}
+
 h1 {
-	
+
 }
 
 p {
