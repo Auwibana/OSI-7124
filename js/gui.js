@@ -78,9 +78,16 @@ function loginGet(response) {
 function auswahlGet(response) {
 	document.getElementById('standort_p').innerHTML = response.start
 	document.getElementById('ziel_p').innerHTML = response.end
+	document.getElementById('time_p').innerHTML = response.time
+	document.getElementById('date_p').innerHTML = response.date
 }
 
 function optionGet(response) {
+	
+	if(response.passenger) {
+		document.getElementById('take_passengers_p').innerHTML = "Ja"
+	} else document.getElementById('take_passengers_p').innerHTML = "Nein"
+
 	document.getElementById('passenger_p').innerHTML = response.persons
 	document.getElementById('preis_p').innerHTML = 20+response.persons*5 +"€"
 	document.getElementById('preis').innerHTML = 20+response.persons*5 +"€"

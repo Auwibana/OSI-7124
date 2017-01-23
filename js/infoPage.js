@@ -82,6 +82,26 @@ function myMap() {
     showCar(map)
 
     // calcRoute(directionsDisplay);
+	lat= 52.3759;
+	lng: 9.732;
+
+	showCar(map, lat, lng);
+
+	// Es können beliebig viele waypoints hier erstellt werden, um sie als zwischenstops zu nutzen
+	get("option");
+	var  waypoints = [];
+
+	zwischen.forEach((n) => {
+		var waypoints_obj = {
+			location: n,
+			stopover: true
+		};
+		waypoints.push(waypoints_obj);
+	})
+
+	get("auswahl");
+
+	calcRoute(directionsDisplay, start, end, waypoints);
 
 
     // nachdem das Auto angekommen ist
@@ -93,7 +113,8 @@ function myMap() {
 // CalcRoute sollte modifizierbarer sein, Das heißt mit Argumenten kann man eine beliebige Strecke planen.
 // Dann kann man diese Funktion auch benutzen um die Strecke des Autos zum Startpunkt zu planen.
 
-function calcRoute(directionsDisplay) {
+// Hier und weiter unten fehlt noch die Abfahrtszeit als übergabe
+function calcRoute(directionsDisplay, start, end, waypoints) {
 
     var directionsService = new google.maps.DirectionsService();
 
@@ -141,6 +162,99 @@ function showCar(map) {
         lat: 52.3759,
         lng: 9.732
     };
+	var directionsService = new google.maps.DirectionsService();
+
+	// Beispiele zur Eingabe der Zeit
+
+	//var today = new Date();
+	//var birthday = new Date("December 17, 1995 03:24:00");
+	//var birthday = new Date("1995-12-17T03:24:00");
+	//var birthday = new Date(1995,11,17);
+ 	//var birthday = new Date(1995,11,17,3,24,0);
+
+	var depature_time = new Date("December 17, 1995 03:24:00");
+
+  var request = {
+    origin: start,
+    destination: end,
+    travelMode: google.maps.TravelMode.DRIVING,
+		waypoints: waypoints,
+		optimizeWaypoints: true,
+		transitOptions: {
+			departureTime: depature_time
+		}
+  };
+  directionsService.route(request, function(result, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(result);
+    }
+  });
+}
+
+function getTravelTime(start, end, waypoints){
+		var depature_time = new Date("December 17, 1995 03:24:00");
+
+		var directionsService = new google.maps.DirectionsService();
+
+		var request = {
+			origin: start,
+			destination: end,
+			travelMode: google.maps.TravelMode.DRIVING,
+			waypoints: waypoints,
+			optimizeWaypoints: true,
+			transitOptions: {
+				departureTime: depature_time
+			}
+		};
+
+		directionsService.route(request, function(result, status) {
+	    if (status == google.maps.DirectionsStatus.OK) {
+				var time = 0;
+
+				for(var i = 0; i < results.routes[0].legs.length; i++){
+					time += result.routes[0].legs[i].duration.value;
+				}
+
+				alert(time / 60);
+	    }
+	  });
+}
+
+function getWayCoordinates(start, end, waypoints){
+		var depature_time = new Date("December 17, 1995 03:24:00");
+
+		var directionsService = new google.maps.DirectionsService();
+
+		var request = {
+			origin: start,
+			destination: end,
+			travelMode: google.maps.TravelMode.DRIVING,
+			waypoints: waypoints,
+			optimizeWaypoints: true,
+			transitOptions: {
+				departureTime: depature_time
+			}
+		};
+
+		directionsService.route(request, function(result, status) {
+	    if (status == google.maps.DirectionsStatus.OK) {
+				var waypoints = [];
+				// ich gehe hier davon aus das das auto keine zwischenstops mehr macht
+				// und einfach einer geraden Route folgt
+				// das zu ändern wäre aber einfach man müsste mit einer zweiten for schleife
+				// einfach nochmal über legs iterieren
+				for(var i = 0; i < results.routes[0].legs[0].steps.length; i++){
+					waypoints[i] = results.routes[0].legs[0].steps[i].start_location;
+				}
+
+				alert(waypoints);
+	    }
+	  });
+}
+
+function showCar(map, lat, lng){
+
+	var carLattLng = {lat: lat, lng: lng};
 
     var relativePixelSize = scaleImageWIthZoom(map);
 
