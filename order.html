@@ -112,7 +112,7 @@
                                 </div>
                                 <label for="time" class="col-sm-2 control-label">Abfahrtzeit</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="timepicker">
+                                    <input type="text" class="form-control" id="time">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -132,8 +132,8 @@
                         <h3>Optionen</h3>
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Mitfahrer</label>
-                                <div class="col-sm-9">
+                                <label class="col-sm-4 control-label">weitere Mitfahrer</label>
+                                <div class="col-sm-8">
                                     <select class="form-control" name="" id="persons">
                                         <option value="0">0</option>
                                         <option value="1">1</option>
@@ -144,8 +144,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Zwischenstops</label>
-                                <div class="col-sm-9">
+                                <label class="col-sm-4 control-label">Zwischenstops</label>
+                                <div class="col-sm-8">
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Zwischenstops" id="zwischenstops">
                                         <input type="text" style="display:none">
@@ -159,8 +159,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-3"></div>
-                                <div class="col-sm-9" id="list-group-id">
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-8" id="list-group-id">
 									<div class="alert alert-danger alert-dismissible" id="alert-full-list" style="display: none;">
 										<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
     									<strong>Warning!</strong> You can't insert more than 4 interstops!
@@ -169,7 +169,6 @@
 										<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
     									<strong>Warning!</strong> Please insert the location of the interstop first!
 									</div>
-
                                     <ul class="list-group" id="waypoints"></ul>
                                 </div>
                             </div>
@@ -180,7 +179,7 @@
                                             <h3 class="panel-title"><i>i</i></h3>
                                         </div>
                                         <div class="panel-body">
-                                            <label class="control-label">Weitere Mitfahrer autmatisch zuordnen <input type="checkbox" name="" value="" class="" id="passenger"></label>
+                                            <label class="control-label">Weitere Mitfahrer automatisch zuordnen <input type="checkbox" name="" value="" class="" id="passenger"></label>
                                             <button type="button" class="btn btn-info pull-right btn-circle" id="opener"><i>i</i></button>
                                             <div id="wrapper">
                                                 <p>
