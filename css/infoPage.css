@@ -3,6 +3,12 @@ html, body {
 	margin: 0px;
 }
 
+.jumbotron {
+	background-image: url("https://static.pexels.com/photos/27703/pexels-photo-27703.jpg");
+	background-size: cover;
+	color: white;
+}
+
 #siteContainer {
 	display: flex;
 	background-color: lightgrey;
@@ -13,7 +19,7 @@ html, body {
 }
 
 h1 {
-	color: black;
+	/*color: white;*/
 	font-size: 150px;
 	text-align: center;
 	margin-bottom: 8%;
