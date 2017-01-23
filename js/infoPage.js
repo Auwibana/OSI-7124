@@ -40,7 +40,8 @@ var dbname = "hci1";
 var dburl = "http://127.0.0.1:5984/" + dbname + "/";
 var handlersGet = {
     "option": optionGet,
-    "auswahl": auswahlGet
+    "auswahl": auswahlGet,
+		"login":login
 };
 
 function auswahlGet(response) {
@@ -54,7 +55,16 @@ function optionGet(response) {
     zwischen = response.zwischenstops
 }
 
+function login(response){
+	document.getElementById("reg").innerHTML = " "+response.login
+	$('#login').hide()
+	$('#logout').show()
+	$('#login-popup').popover('hide')
+}
 
+$('document').ready(function(){
+	get('login')
+})
 
 function myMap() {
 
