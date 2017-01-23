@@ -97,7 +97,7 @@ function optionGet(response) {
 	} else document.getElementById('take_passengers_p').innerHTML = "Nein"
 
 	document.getElementById('passenger_p').innerHTML = response.persons
-	document.getElementById('preis_p').innerHTML = "Preis: "+20+response.persons*5 +"€"
+	document.getElementById('preis_p').innerHTML = "Preis: "+(20+response.persons*5) +"€"
 	document.getElementById('waypoints-check-table').innerHTML = "<ul id='waypoints-check'></ul>"
 	for(var i = 0; i<response.zwischenstopsHtml.length;i++){
 		var li = document.createElement('li')
@@ -121,7 +121,7 @@ function login(){
 			$('#login').hide()
 			$('#logout').show()
 			$('#login-popup').popover('hide')
-			document.getElementById('bestellen').disabled = false
+			document.getElementById('bestellen').type = "Submit"
 			loginSet(user)
 		}else{
 			$('.passDiv').append('<div class="alert alert-warning alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong><br>Falsches Passwort</div>')
