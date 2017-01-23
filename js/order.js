@@ -232,7 +232,7 @@ $('#input-group-button').click(function() {
 	}
 });
 
-$('#timepicker').datetimepicker({
+$('#time').datetimepicker({
     datepicker: false,
     format: 'H:i',
 	step: 15
@@ -244,7 +244,7 @@ document.getElementById('date').value = d.getDate() + "." + d.getMonth() + 1 + "
 function checkTime(i) {
 	return (i < 10) ? "0" + i : i;
 }
-document.getElementById('timepicker').value = checkTime(d.getHours()) + ":" + checkTime(d.getMinutes());
+document.getElementById('time').value = checkTime(d.getHours()) + ":" + checkTime(d.getMinutes());
 
 
 $('#wrapper').dialog({
