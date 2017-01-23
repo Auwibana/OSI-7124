@@ -31,7 +31,7 @@
 		                <span class="icon-bar"></span>
 		                <span class="icon-bar"></span>
 		            </button>
-                    <a class="navbar-brand" href="index.html">OSI-7124</a>
+                    <a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-road"></span> OSI-7124</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -116,8 +116,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('auswahl')" type="button" id="next-button-step-1">Weiter</button>
-                                    <button type="button" class="btn btn-primary backBtn pull-left">Zurück</button>
+                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('auswahl')" type="button" id="next-button-step-1">Weiter <soan class="glyphicon glyphicon-chevron-right"></span></button>
+                                    <button type="button" class="btn btn-primary backBtn pull-left"><span class="glyphicon glyphicon-chevron-left"></span> Zurück</button>
                                 </div>
                             </div>
                         </form>
@@ -150,7 +150,7 @@
                                         <input type="text" style="display:none">
                                         <!-- just because magic happens here-->
                                         <div class="input-group-btn">
-                                            <button type="button" class="btn btn-default" id="input-group-button">
+                                            <button type="button" class="btn btn-default" id="input-group-button" onclick="addWaypoint()">
                                                 +
                                             </button>
                                         </div>
@@ -162,11 +162,11 @@
                                 <div class="col-sm-8" id="list-group-id">
                                     <div class="alert alert-danger alert-dismissible" id="alert-full-list" style="display: none;">
                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                                        <strong>Warning!</strong> You can't insert more than 4 interstops!
+                                        <strong>Warning</strong> <span class="glyphicon glyphicon-warning-sign"></span><br>You can't insert more than 4 interstops!
                                     </div>
                                     <div class="alert alert-danger alert-dismissible" id="alert-empty-input" style="display: none;">
                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                                        <strong>Warning!</strong> Please insert the location of the interstop first!
+                                        <strong>Warning</strong> <span class="glyphicon glyphicon-warning-sign"></span><br>Please insert the location of the interstop first!
                                     </div>
                                     <ul class="list-group" id="waypoints"></ul>
                                 </div>
@@ -175,11 +175,11 @@
                                 <div class="col-sm-12">
                                     <div class="panel panel-info">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title"><i>i</i></h3>
+                                            <h3 class="panel-title"><span class="glyphicon glyphicon-info-sign"></span></h3>
                                         </div>
                                         <div class="panel-body">
                                             <label class="control-label">Weitere Mitfahrer automatisch zuordnen <input type="checkbox" name="" value="" class="" id="passenger"></label>
-                                            <button type="button" class="btn btn-info pull-right btn-circle" id="opener"><i>i</i></button>
+                                            <button type="button" class="btn btn-info pull-right btn-circle" id="opener">i</button>
                                             <div id="wrapper">
                                                 <p>
                                                     <h4>Was passiert, wenn der Haken gesetzt ist?</h4> Unsere Software wird Ihnen weitere Mitfahrer zuordnen, um die Kapazität des Autos optimal zu nutzen.</p>
@@ -192,8 +192,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('option');update();" type="button" id="next-button-step-2">Weiter</button>
-                                    <button type="button" class="btn btn-primary backBtn pull-left">Zurück</button>
+                                    <button class="btn btn-primary nextBtn pull-right" onclick="set('option');update();" type="button" id="next-button-step-2">Weiter <soan class="glyphicon glyphicon-chevron-right"></span></button>
+                                    <button type="button" class="btn btn-primary backBtn pull-left"><span class="glyphicon glyphicon-chevron-left"></span> Zurück</button>
                                 </div>
                             </div>
                         </form>
@@ -235,12 +235,12 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td><strong id='preis_p'>Preis: 20€</strong></td>
+                                    <td><strong id='preis_p'></strong></td>
                                 </tr>
                             </tbody>
                         </table>
                         <button class="btn btn-primary nextBtn pull-right" type="button" id="next-button-step-3">kostenpflichtig Bestellen</button>
-                        <button type="button" class="btn btn-primary backBtn pull-left">Zurück</button>
+                        <button type="button" class="btn btn-primary backBtn pull-left"><span class="glyphicon glyphicon-chevron-left"></span> Zurück</button>
                     </div>
                 </div>
             </div>
