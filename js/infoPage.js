@@ -79,8 +79,19 @@ function myMap() {
 	// Directions panel gibt eine Weg Beschreibung die brauchen wir aber gerade nicht.
 	//directionsDisplay.setPanel(document.getElementById("directionsPanel"));
 
-	calcRoute(directionsDisplay);
+	showCar(map)
+
+	// calcRoute(directionsDisplay);
+
+
+	// nachdem das Auto angekommen ist
+	// map.clearOverlays();
+
+	// Dann veschwindet der Marker wieder.
+	// oder marker.setMap(null)
 }
+// CalcRoute sollte modifizierbarer sein, Das heißt mit Argumenten kann man eine beliebige Strecke planen.
+// Dann kann man diese Funktion auch benutzen um die Strecke des Autos zum Startpunkt zu planen.
 
 function calcRoute(directionsDisplay) {
 
@@ -90,26 +101,94 @@ function calcRoute(directionsDisplay) {
 	get("option")
 	var  waypoints = [];
 
-zwischen.forEach((n) => {
-	var waypoints_obj = {
-		location: n,
-		stopover: true
-	};
-	waypoints.push(waypoints_obj);
-})
+	zwischen.forEach((n) => {
+		var waypoints_obj = {
+			location: n,
+			stopover: true
+		};
+		waypoints.push(waypoints_obj);
+	})
 
+	// Beispiele zur Eingabe der Zeit
+
+	//var today = new Date();
+	//var birthday = new Date("December 17, 1995 03:24:00");
+	//var birthday = new Date("1995-12-17T03:24:00");
+	//var birthday = new Date(1995,11,17);
+ 	//var birthday = new Date(1995,11,17,3,24,0);
+
+	var departure_time = new Date().getTime() / 1000;
 
 	get("auswahl")
   var request = {
-    origin:start,
-    destination:end,
+    origin: start,
+    destination: end,
     travelMode: google.maps.TravelMode.DRIVING,
 		waypoints: waypoints,
-		optimizeWaypoints: true
+		optimizeWaypoints: true,
+		departure_time: departure_time
   };
   directionsService.route(request, function(result, status) {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(result);
     }
   });
+}
+
+function showCar(map){
+
+	var carLattLng = {lat: 52.3759, lng: 9.732};
+
+	var relativePixelSize = scaleImageWIthZoom(map);
+
+	var marker = new google.maps.Marker({
+		position: carLattLng,
+		map: map,
+		title: "Dein Auto",
+		icon: null
+	});
+
+	setMarkerIcon(marker, relativePixelSize);
+
+	addInfoWindowToMarker(map, marker, "Auto");
+
+	google.maps.event.addListener(map, "zoom_changed", function(){
+
+		var relativePixelSize = scaleImageWIthZoom(map);
+		setMarkerIcon(marker, relativePixelSize);
+
+	});
+}
+
+function scaleImageWIthZoom(map){
+	var pixelSizeAtZoom0 = 8; //the size of the icon at zoom level 0
+	var maxPixelSize = 350; //restricts the maximum size of the icon, otherwise the browser will choke at higher zoom levels trying to scale an image to millions of pixels
+
+	var zoom = map.getZoom();
+	var relativePixelSize = Math.round(pixelSizeAtZoom0*Math.pow(2,zoom)); // use 2 to the power of current zoom to calculate relative pixel size.  Base of exponent is 2 because relative size should double every time you zoom in
+
+	if(relativePixelSize > maxPixelSize) //restrict the maximum size of the icon
+		relativePixelSize = maxPixelSize;
+
+	return relativePixelSize / 16; //  16 is a costum modifier because this code is written for images with the size 8x8, momentarly the image is 256x256
+}
+
+function setMarkerIcon(marker, relativePixelSize){
+	marker.setIcon(
+		new google.maps.MarkerImage(
+		'http://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/128/Car-icon.png',
+		null,
+		new google.maps.Point(0, 0), // origin
+		new google.maps.Point(relativePixelSize / 2, relativePixelSize / 2), // anchor
+		new google.maps.Size(relativePixelSize, relativePixelSize	)
+		)
+	)
+}
+
+function addInfoWindowToMarker(map, marker, contentString){
+	var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+	infowindow.open(map, marker)
 }
