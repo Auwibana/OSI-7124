@@ -109,8 +109,9 @@ function auswahl(response) {
 }
 
 function option(response) {
-		var e = document.getElementById("passenger_select");
+		var e = document.getElementById("persons");
 		var persons = e.options[e.selectedIndex].value;
+		var passenger = document.getElementById("passenger").checked
 
 		var zwischenstops = document.getElementById("zwischenstops").value
 		put(response, {"persons" : persons, "passenger": passenger, "zwischenstops":zwischenstops});
